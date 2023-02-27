@@ -7,3 +7,4 @@
                       Покушалова Татьяна
                       Величко Илья
 Ссылки на дополнительные материалы:
+     Miro board: https://miro.com/app/board/uXjVPjUNL7U=/
