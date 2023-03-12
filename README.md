@@ -8,5 +8,5 @@
                       Покушалова Татьяна  
                       Величко Илья  
  Ссылки на дополнительные материалы:  
-      Miro board: https://miro.com/app/board/uXjVPjUNL7U=/
+      Miro board: https://miro.com/app/board/uXjVPjUNL7U=/ 
       Yougile: https://ru.yougile.com/team/439a3f37f022/Создание-сайта-Weather/Моя-доска
