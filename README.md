@@ -11,3 +11,9 @@
  Ссылки на дополнительные материалы:  
       <a href="https://miro.com/app/board/uXjVPjUNL7U=/"> - Miro board </a>  
       <a href="https://ru.yougile.com/team/439a3f37f022/Создание-сайта-Weather/Моя-доска"> - Yougile </a>  
+      <a href="https://github.com/DrakonAdm/weatherTP/blob/main/Документация/КурсоваяТП.pdf"> - Курсовая работа.pdf </a>  
+      <a href="https://github.com/DrakonAdm/weatherTP/blob/main/Документация/КурсоваяТП.docx"> - Курсовая работа.docx </a>  
+      <a href="https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Техническое%20задание.pdf"> - Техническое задание.pdf </a>  
+      <a href="https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Техническое%20задание.docx"> - Техническое задание.docx </a>  
+      <a href="https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Диаграммы.pdf"> - Диаграммы.pdf </a>  
+      <a href="https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Диаграммы.docx"> - Диаграммы.docx </a>
