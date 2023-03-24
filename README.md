@@ -6,9 +6,10 @@
 3) В специальном разделе будет показана аномальная погода (жара, холод) в прошлые годы и в будущие.  
  
 ### Разработчики проекта:  
-                      [Дракин Антон](https://github.com/DrakonAdm)
-                      [Покушалова Татьяна](https://github.com/Tatyana0908)  
-                      [Величко Илья](https://github.com/DragonFelixx) 
+[Дракин Антон](https://github.com/DrakonAdm)
+[Покушалова Татьяна](https://github.com/Tatyana0908)  
+[Величко Илья](https://github.com/DragonFelixx) 
+
 ### Сервисы:  
 [Miro boar](https://miro.com/app/board/uXjVPjUNL7U=/)  
 [Yougile](https://ru.yougile.com/team/439a3f37f022/Создание-сайта-Weather/Моя-доска)  
