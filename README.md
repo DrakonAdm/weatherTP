@@ -10,7 +10,8 @@
                       Покушалова Татьяна  
                       Величко Илья  
 ### Сервисы:  
-      <a href="https://miro.com/app/board/uXjVPjUNL7U=/"> - Miro board </a>  
+[Miro boar](miro.com/app/board/uXjVPjUNL7U=/)
+      <a href="https://"> - d </a>  
       <a href="https://ru.yougile.com/team/439a3f37f022/Создание-сайта-Weather/Моя-доска"> - Yougile </a>  
       
 ### Документация: 
