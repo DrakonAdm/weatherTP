@@ -15,7 +15,7 @@
       
 ### Документация: 
 [Курсовая работа.pdf](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/КурсоваяТП.pdf)  
-[Курсовая работа.docx](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/КурсоваяТП.doc)  
+[Курсовая работа.docx](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/КурсоваяТП.docx)  
 [Техническое задание.pdf](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Техническое%20задание.pdf)  
 [Техническое задание.docx](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Техническое%20задание.docx)  
 [Диаграммы.pdf](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Диаграммы.pdf)  
