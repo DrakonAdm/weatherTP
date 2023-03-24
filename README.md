@@ -11,7 +11,7 @@
                       Величко Илья  
 ### Сервисы:  
 [Miro boar](https://miro.com/app/board/uXjVPjUNL7U=/)  
-[Yougile]([https://miro.com/app/board/uXjVPjUNL7U=/](https://ru.yougile.com/team/439a3f37f022/Создание-сайта-Weather/Моя-доска))  
+[Yougile](https://ru.yougile.com/team/439a3f37f022/Создание-сайта-Weather/Моя-доска)  
       
 ### Документация: 
       <a href="https://github.com/DrakonAdm/weatherTP/blob/main/Документация/КурсоваяТП.pdf"> - Курсовая работа.pdf </a>  
