@@ -11,8 +11,8 @@
 [Величко Илья](https://github.com/DragonFelixx) 
 
 ### Сервисы:  
-[Miro boar](https://miro.com/app/board/uXjVPjUNL7U=/)  
-[Yougile](https://ru.yougile.com/team/439a3f37f022/Создание-сайта-Weather/Моя-доска)  
+[Miro board](https://miro.com/app/board/uXjVPjUNL7U=/)  
+[Yougile](https://ru.yougile.com/board/p64wtvbqm5zy)  
       
 ### Документация: 
 [Курсовая работа.pdf](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/КурсоваяТП.pdf)  
