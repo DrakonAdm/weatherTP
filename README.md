@@ -21,3 +21,6 @@
 [Техническое задание.docx](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Техническое%20задание.docx)  
 [Диаграммы.pdf](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Диаграммы.pdf)  
 [Диаграммы.docx](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Диаграммы.docx)  
+[Презентация.pptx](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Погода%20от%20Терминатора.pptx) 
+
+
