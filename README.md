@@ -8,7 +8,7 @@
 ### Разработчики проекта:  
 [Дракин Антон](https://github.com/DrakonAdm)  
 [Покушалова Татьяна](https://github.com/Tatyana0908)  
-[Величко Илья](https://github.com/DragonFelixx)
+[Величко Илья](https://github.com/DragonFelixx)    
 [Новиков Артём](https://github.com/suleymaniac)
 
 ### Сервисы:  
