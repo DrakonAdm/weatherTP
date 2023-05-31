@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+  web:
+    image: terminator:latest
+
+    volumes:
+      - ./terminator/:/usr/src/terminator/
+
+    ports:
+      - 8000:8000
+
+    environment:
+      - DJANGO_SUPERUSER_USERNAME=AdmDrakin
+      - DJANGO_SUPERUSER_PASSWORD=figas67_Tar.-Pid
+      - DJANGO_SUPERUSER_EMAIL=Antoni.Drakon@mail.ru
+
+    env_file:
+      - .env.dev
+
+  database:
+    image: 'postgres:15-alpine'
+    container_name: database
+    ports:
+      - "5434:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=renty
+    restart: always
