@@ -1,22 +1,36 @@
 import React from 'react';
-import {Button, Card, Col, Container, Form, Row} from "react-bootstrap";
+import {Button, Card, CardGroup, Col, Container, Form, Row} from "react-bootstrap";
 import {NavLink} from "react-router-dom";
 import {ABNORMAL_ROUTE, ARCHIVE_ROUTE, REGISTRATION_ROUTE} from "../utils/consts";
 import '../components/App.css'
 
 const Statistic = () => {
+    document.body.style.background = "#FFFAF4";
     return (
-        <Container className='list-group-horizontal'>
-            <Row>
-                <Col sm={6}>
-                <Card style={{width: 600}} className="p-4">
+        <Container style={{height: window.innerHeight - 50, width: window.innerWidth - 500, backgroundColor: "#FFFAF4"}}>
+            <CardGroup>
+                <Card style={{width: 900, backgroundColor: "#FFFAF4", borderWidth: 0}} className="p-5">
                     <Button
-                        variant={"outline-success"}
-                        className="statistics"
+                        variant={"outline-dark"}
+                        className="button_menu"
                         href={ARCHIVE_ROUTE}
                     >
                         Статистика за прошедшие годы
                     </Button>
+                </Card>
+                <Card style={{width: 900, backgroundColor: "#FFFAF4", borderWidth: 0}} className="p-5">
+                    <Button
+                        variant={"outline-dark"}
+                        className="button_menu"
+                        href={ABNORMAL_ROUTE}
+                    >
+                        Статистика аномальной погоды
+                    </Button>
+                </Card>
+            </CardGroup>
+            <Row>
+                <Col sm={6}>
+                <Card style={{width: 450, backgroundColor: "#FFFAF4", borderWidth: 0}} className="p-4">
                         <div>
                         В этом разделе вы можете увидеть статистику погоды по дням
                         по показателям: <br />
@@ -38,14 +52,7 @@ const Statistic = () => {
                 </Card>
                 </Col>
                 <Col sm={6}>
-                <Card style={{width: 600}} className="p-4">
-                    <Button
-                        variant={"outline-success"}
-                        className="statistics"
-                        href={ABNORMAL_ROUTE}
-                    >
-                        Статистика аномальной погоды
-                    </Button>
+                <Card style={{width: 450, backgroundColor: "#FFFAF4", borderWidth: 0}} className="p-4">
                     <div>
                         В этом разделе вы можете увидеть аномальные показатели
                         погоды (когда показатели принимают значения, сильно

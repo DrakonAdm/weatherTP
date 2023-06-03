@@ -4,12 +4,13 @@ import {Button, Card, Container, Form} from "react-bootstrap";
 import {LOGIN_ROUTE, REGISTRATION_ROUTE} from "../utils/consts";
 
 const Auth = () => {
+    document.body.style.background = "#FFFAF4";
     return (
         <Container
             className="d-flex justify-content-center align-items-center"
             style = {{height: window.innerHeight - 100}}
         >
-            <Card style={{width: 600, borderWidth: 0}} className="p-4">
+            <Card style={{width: 600, borderWidth: 0, backgroundColor: "#FFFAF4"}} className="p-4">
                 <h2 className="m-auto">Авторизация</h2>
                 <h5 className="mt-4 me-left">Введите Email:</h5>
                 <Form.Control

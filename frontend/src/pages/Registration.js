@@ -4,12 +4,13 @@ import {NavLink} from "react-router-dom";
 import {LOGIN_ROUTE} from "../utils/consts";
 
 const Registration = () => {
+    document.body.style.background = "#FFFAF4";
     return (
         <Container
             className="d-flex justify-content-center align-items-center"
-            style = {{height: window.innerHeight - 100}}
+            style={{height: window.innerHeight - 100}}
         >
-            <Card style={{width: 600, borderWidth: 0}} className="p-4">
+            <Card style={{width: 600, borderWidth: 0, backgroundColor: "#FFFAF4"}} className="p-4">
                 <h2 className="m-auto">Регистрация</h2>
                 <h5 className="mt-4 me-left">Введите имя:</h5>
                 <Form.Control
@@ -37,9 +38,9 @@ const Registration = () => {
                 >
                     Зарегистрироваться
                 </Button>
-                    <div className="mt-5 text-center" >
-                        Уже зарегистрированы? <NavLink to={LOGIN_ROUTE} variant={"outline-success"}>Войти </NavLink>
-                    </div>
+                <div className="mt-5 text-center">
+                    Уже зарегистрированы? <NavLink to={LOGIN_ROUTE} variant={"outline-success"}>Войти </NavLink>
+                </div>
             </Card>
         </Container>
     );

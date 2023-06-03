@@ -51,17 +51,15 @@
   background-color: #FFFAF4;
 }
 
-.statistics {
-  /* Статистика прошлые */
-
-
+.button_menu {
   box-sizing: border-box;
 
   /* Auto layout */
 
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+  flex-direction: column;
+  align-self: center;
+  text-align: center;
   padding: 10px;
   gap: 10px;
 
@@ -73,8 +71,33 @@
   border-radius: 15px;
 
   /* Inside auto layout */
-
-  flex: none;
-  order: 0;
+  order: 1;
   flex-grow: 0;
+  color: black;
+}
+
+.button_menu_active {
+  box-sizing: border-box;
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  text-align: center;
+  padding: 10px;
+  gap: 10px;
+
+  width: 336px;
+  height: 44px;
+
+  background: #323232;
+  border: 1px solid #000000;
+  border-radius: 15px;
+
+  /* Inside auto layout */
+  order: 1;
+  flex-grow: 0;
+  color: #EADAFF;
+
 }
