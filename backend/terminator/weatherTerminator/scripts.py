@@ -1,11 +1,13 @@
-from datetime import date
+from django.utils import timezone
+from django.utils.datetime_safe import date
+
 from .models import Forecast, Past, Location
 import requests
 from .models import Forecast, Location
 
 
 def check_and_move_forecast():
-    today = date.today()
+    today = timezone.now().date()
     forecasts = Forecast.objects.filter(date__lt=today)
 
     for forecast in forecasts:
@@ -24,11 +26,12 @@ def check_and_move_forecast():
 
 
 def get_weather_forecast():
+    """что-то доделать скрипт не доконца верен"""
     # Получаем список городов из модели Location
     locations = Location.objects.all()
 
     # Получаем текущую дату
-    today = date.today()
+    today = timezone.now().date()
 
     for location in locations:
         # Формируем URL для запроса прогноза погоды
@@ -69,3 +72,5 @@ def get_weather_forecast():
                     )
 
 
+"""Нужен скрипт обновления погоды на день, когда он наступил"""
+"""Обновление аномальной погоды/ и добавление в неё"""

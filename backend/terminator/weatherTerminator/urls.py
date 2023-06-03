@@ -1,28 +1,70 @@
-from django.urls import path, re_path
+from django.urls import path, re_path, include
 from django.contrib import admin
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenVerifyView, TokenRefreshView
+
 from .views import *
+from django.contrib.auth import views
+from rest_framework import routers
 
 app_name = 'weatherTerminator'
+
+router = routers.SimpleRouter()
+router.register(r'listUser', UserViewSets)
+
+# авторизация и аунтификация через Token
+#     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+#     path('auth/', include('djoser.urls.jwt')),
+#     re_path(r'^auth/', include('djoser.urls.authtoken')),
+#     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+#     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+#     path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
+
 urlpatterns = [
-    path('admin/', admin.site.urls, name='adminPanel'),
 
+    # advertisement
+    path('/advertisement', AdvertisementAPIView.as_view(), name='advertisement'),  # главная страница
 
+    # авторизация и аутентификация по простому https://github.com/dotja/authentication_app_react_django_rest
+    path('register', UserRegister.as_view(), name='register'),
+    path('login', UserLogin.as_view(), name='login'),
+    path('logout', UserLogout.as_view(), name='logout'),
+    # на всякий случай
+    path('user', UserView.as_view(), name='user'),
 
+    # обработка изменений User от админа
+    path('', include(router.urls)),
+    # path('api-user/', include('rest_framework.urls', namespace='rest_framework')),
 
+    # сортировка по today, tomorrow and definiteDAY
+    path('/today', ForecastDayAPIView.as_view(), name='today'),  # главная страница
+    path('/tomorrow', ForecastDayAPIView.as_view(), name='tomorrow'),
+    path('/date', ForecastDayAPIView.as_view(), name='date'),  # прогноз на искомый день PastView
 
-    # path('', index, name='home'),  # http://127.0.0.1:8000/
-    # path('', Session_base.as_view(), name='base'),  # http://127.0.0.1:8000/cinema
-    # path('film', Film_base.as_view(), name='cinema_film'),  # http://127.0.0.1:8000/cinema/film
-    # path('film_company', Fc_base.as_view(), name='cinema_fc'),  # http://127.0.0.1:8000/cinema/film_company
-    # path('contacts', cinema_contact, name='cinema_contact'),  # http://127.0.0.1:8000/cinema/contacts
-    # path('buy/', Ticket_buy.as_view(), name='buy'),
-    # path('login/', LoginUser.as_view(), name='login'),
-    # path('register/', RegisterUser.as_view(), name='register'),
-    # path('logout/', logout_user, name='logout'),
-    # path('buy/confirm', confirm, name='confirm')
+    path('/days', ForecastManyDayAPIView.as_view(), name='days'),  # главная страница (прогноз на 10 дней)
+    path('/month', ForecastManyDayAPIView.as_view(), name='month'),  # главная страница (прогноз на месяц)
 
+    # new passwort
+    path('accountUser/', SetNewPass.as_view(), name='accountUser'),  # личный кабинет пользователя со сменой пароля
 
+    path('statisticPast/', PastView.as_view(), name='statisticPast'),  # статистика прошедшей погоды
+    path('statisticAbnormal/', AbnormalView.as_view(), name='statisticAbnormal'),  # статистика прошедшей погоды
 
-    # path('sens/<slug:hall>/', sessions),  # http://127.0.0.1:8000/sens/hall_one/
-    # re_path(r'^archive/(?P<year>[0-9]{4})/', archive)  # http://127.0.0.1:8000/archive/2022/
+    # просто выдаёт nickname пользователя
+    path('choiceUser/', SetViewNicknameUser.as_view(), name='choiceUser'),
+    # выбор статистики погоды SetViewEmailSuperUser
+    # просто выдаёт email superuser
+    path('emailSuperUser/', SetViewEmailSuperUser.as_view(), name='emailSuperUser'),  # выбор статистики погоды
+
+    path('admin/', admin.site.urls, name='adminPanel'),  # export const PROFILE_ADMIN_ROUTE = '/profileAdmin'
+
+    # request в нём есть ссесия и т.д.
+    # или токен хранить, пока валиден для пользователя (в каждом запросе запихивать или в заголовке или в отдельное поля)
+
+    # закинуть в статик файлы (картинки закинуть) сгунерить ссылки на них и напрямую во фронте вставить
+    # сделать отдельный роут, который выдаёт ссылки на картинки и фронт сам понимает куда что
+    # сессион сторедж фронт помещает (сбда же и реклама (новостью идёт) админ мог загружать файлы, возвращается объект с ссылками и т.д.)
 ]
+
+handler404 = pageNotFound
+
+# urlpatterns += router.urls
