@@ -21,9 +21,10 @@ const Auth = () => {
                 <Form.Control
                     className="mt-3"
                     placeholder="password"
+                    type="password"
                 />
                 <Button
-                    variant={"outline-success"}
+                    variant={"outline-dark"}
                     className="mt-3 align-self-center"
                 >
                     Войти

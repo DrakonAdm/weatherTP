@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {Button, ButtonGroup, Card, CardGroup, Container, Dropdown, Table} from "react-bootstrap";
+import {Button, ButtonGroup, Card, CardGroup, Container, Dropdown, Table, Form} from "react-bootstrap";
 import {
     ABNORMAL_ROUTE,
     ARCHIVE_ROUTE,
@@ -35,6 +35,7 @@ const Archive = observer(() => {
                     </Button>
                 </Card>
             </CardGroup>
+            <Card className="d-flex align-items-center text-center justify-content-center">
             <ButtonGroup className="d-flex">
                 <Dropdown>
                     <Dropdown.Toggle id="dropdown-basic" className="button_menu" variant="outline-dark">
@@ -56,12 +57,26 @@ const Archive = observer(() => {
                         <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
-                <Button className="button_menu" variant="outline-dark" href={DATE_ROUTE}>Дата</Button>
+                <Form.Control
+                    /*                    value={purchase_date}
+                                        onChange={e => setPurchaseDate(e.target.value)}*/
+                    className="mt-3 button-menu"
+                    type="date"
+                />
+                <Form.Control
+                    /*                    value={purchase_date}
+                                        onChange={e => setPurchaseDate(e.target.value)}*/
+                    className="mt-3 button-menu"
+                    type="date"
+                />
+
+
             </ButtonGroup>
+            </Card>
             <Card style={{width: 900, backgroundColor: "#FFFAF4"}} className="p-5">
-                <Table bordered hover7 size="sm" >
+                <Table bordered hover7 size="sm">
                     <thead className="text-center">
-                    <tr style={{backgroundColor: "#EFF8FF"}} >
+                    <tr style={{backgroundColor: "#EFF8FF"}}>
                         <th>Дата</th>
                         <th>Минимальная температура</th>
                         <th>Максимальная температура</th>

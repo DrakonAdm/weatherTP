@@ -26,14 +26,16 @@ const Registration = () => {
                 <Form.Control
                     className="mt-3"
                     placeholder="password"
+                    type="password"
                 />
                 <h5 className="mt-4 me-left">Повторите пароль:</h5>
                 <Form.Control
                     className="mt-3"
                     placeholder="password"
+                    type="password"
                 />
                 <Button
-                    variant={"outline-success"}
+                    variant={"outline-dark"}
                     className="mt-3 align-self-center"
                 >
                     Зарегистрироваться
