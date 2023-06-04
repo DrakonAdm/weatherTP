@@ -12,14 +12,27 @@ from datetime import timedelta
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
+from rest_framework.schemas import AutoSchema
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
+# from .Clothes.forecastClothes import ForecastClothes
+from .forecastClothes import forecastClothes
 from .models import *
 from .serializers import *
 from rest_framework import status, generics, viewsets, permissions
 
 from .validations import *
+import coreapi
+
+
+# class TodoListViewSchema(AutoSchema):
+#     def get_manual_fields(self, path, method):
+#         extra_fields = []
+#         if method.lower() in ['post', 'get']:
+#             extra_fields = [
+#                 coreapi.Field('desc')
+#             ]
 
 
 class MyAPIListPagination(PageNumberPagination):
@@ -53,6 +66,7 @@ class ForecastDayAPIView(generics.ListAPIView):
         if 'date' in self.request.GET:
             dateSearch = self.request.GET.get('date')
         elif 'tomorrow' in self.request.GET:
+            """возможно фронт не передаст завтрашнюю дату"""
             dateSearch = self.request.GET.get('tomorrow')
         else:
             dateSearch = timezone.now().date()
@@ -64,7 +78,11 @@ class ForecastDayAPIView(generics.ListAPIView):
 
         queryset = self.queryset.objects.filter(date=dateSearch, city__city=city, city__country=country)
 
-        """вызов скрипта для предсказания одежды"""
+        maxStr, averageStr, minStr = forecastClothes(queryset)
+
+        queryset = queryset.annotate(maxTemperature=models.Value(maxStr, output_field=models.CharField()))
+        queryset = queryset.annotate(averageTemperature=models.Value(averageStr, output_field=models.CharField()))
+        queryset = queryset.annotate(minTemperature=models.Value(minStr, output_field=models.CharField()))
 
         """правильно ли возвращать queryset????"""
         # queryset = self.queryset.objects.filter(date=date)
@@ -196,7 +214,7 @@ class AbnormalView(generics.ListAPIView):
         if 'firstYear' in self.request.GET and 'secondYear' in self.request.GET:
             firstYear = self.request.GET.get('firstYear')
             secondYear = self.request.GET.get('secondYear')
-            if firstYear.isdigit() and len(firstYear) <= 4 and secondYear.isdigit() and len(secondYear) <= 4:
+            if firstYear.isdigit() and len(firstYear) == 4 and secondYear.isdigit() and len(secondYear) == 4:
                 """year__lte - норм?"""
                 queryset = queryset.objects.filter(year__lte=firstYear + secondYear).select_related('minT', 'maxT',
                                                                                                     'maxWS',
@@ -219,7 +237,7 @@ class AbnormalView(generics.ListAPIView):
 
         if 'firstYear' in self.request.GET:
             firstYear = self.request.GET.get('firstYear')
-            if firstYear.isdigit() and len(firstYear) <= 4:
+            if firstYear.isdigit() and len(firstYear) == 4:
                 """year__lte - норм?"""
                 """получить int года сейчас"""
                 queryset = queryset.objects.filter(year__lte=firstYear + 2023).select_related('minT', 'maxT', 'maxWS',
@@ -233,7 +251,7 @@ class AbnormalView(generics.ListAPIView):
 
         if 'secondYear' in self.request.GET:
             secondYear = self.request.GET.get('secondYear')
-            if secondYear.isdigit() and len(secondYear) <= 4:
+            if secondYear.isdigit() and len(secondYear) == 4:
                 """year__lte - норм?"""
                 queryset = queryset.objects.filter(year=secondYear).select_related('minT', 'maxT', 'maxWS',
                                                                                    'maxP').exclude(
@@ -269,6 +287,7 @@ class AdvertisementAPIView(APIView):
     def get(self, request, *args, **kwargs):
         if request.user.is_superuser:
             """выдать страниицы для выбора, где заменять рекламу"""
+            """Загрузка файла API django - можно через admin поле"""
         return Response({'error': 'Incorrect password'})
 
     def post(self, request, *args, **kwargs):
@@ -281,7 +300,9 @@ class SetNewPass(APIView):
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             modelUser = get_user_model()
-            nicknameUser = modelUser.objects.get(nickname=request.user.nickname)
+            nicknameUser = "Вы не добавили"
+            if 'nickname' in request.data:
+                nicknameUser = modelUser.objects.get(nickname=request.user.nickname)
             emailUser = modelUser.objects.get(email=request.user.email)
             return Response({'nickname': nicknameUser}, {'email': emailUser})
         return Response({'error': 'Incorrect password'})
@@ -290,7 +311,7 @@ class SetNewPass(APIView):
         if not request.user.is_authenticated:
             return Response({'error': 'Incorrect password'})
         q = User.objects.all()
-        user = q.get(nickname=f'+{request.data.get("nickname")}')
+        user = q.get(email=f'+{request.data.get("email")}')
 
         res = Response(status=status.HTTP_404_NOT_FOUND)
         if 'city' in request.data:
@@ -300,6 +321,11 @@ class SetNewPass(APIView):
 
         if 'country' in request.data:
             user.country = request.data.get("country")
+            user.save()
+            res = Response(status=status.HTTP_200_OK)
+
+        if 'nickname' in request.data:
+            user.nickname = request.data.get("nickname")
             user.save()
             res = Response(status=status.HTTP_200_OK)
 

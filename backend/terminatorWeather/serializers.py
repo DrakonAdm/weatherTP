@@ -1,13 +1,13 @@
 from django.contrib.auth import authenticate, get_user_model
 from django.core.exceptions import ValidationError
 from rest_framework import serializers
-from models import *
-from djoser.serializers import UserCreateSerializer
+from .models import *
+# from djoser.serializers import UserCreateSerializer
 
 UserModel = get_user_model()
 
 
-class UserSerializer(UserCreateSerializer):
+class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
 
     class Meta:
@@ -79,7 +79,7 @@ class ForecastSerializer(serializers.ModelSerializer):
 
 class PastSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Forecast
+        model = Past
         fields = ('id',
                   'date',
                   'minTem',
@@ -93,7 +93,7 @@ class PastSerializer(serializers.ModelSerializer):
 
 class AbnormalSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Forecast
+        model = Abnormal
         fields = ('id',
                   'year',
                   'minT',

@@ -1,15 +1,19 @@
 from django.urls import path, re_path, include
 from django.contrib import admin
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenVerifyView, TokenRefreshView
+# from rest_framework_simplejwt.views import TokenObtainPairView, TokenVerifyView, TokenRefreshView
 
 from .views import *
 from django.contrib.auth import views
 from rest_framework import routers
+from rest_framework_swagger.views import get_swagger_view
 
-app_name = 'weatherTerminator'
+app_name = 'terminatorWeather'
 
 router = routers.SimpleRouter()
 router.register(r'listUser', UserViewSets)
+
+schema_view = get_swagger_view(title='Swagger TerminatorWeather')
+
 
 # авторизация и аунтификация через Token
 #     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
@@ -20,28 +24,29 @@ router.register(r'listUser', UserViewSets)
 #     path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
 
 urlpatterns = [
+    path('swagger/', schema_view),  # чтобы открыть /
 
     # advertisement
-    path('/advertisement', AdvertisementAPIView.as_view(), name='advertisement'),  # главная страница
+    path('advertisement/', AdvertisementAPIView.as_view(), name='advertisement'),  # обработка рекламы
 
     # авторизация и аутентификация по простому https://github.com/dotja/authentication_app_react_django_rest
-    path('register', UserRegister.as_view(), name='register'),
-    path('login', UserLogin.as_view(), name='login'),
-    path('logout', UserLogout.as_view(), name='logout'),
+    path('register/', UserRegister.as_view(), name='register'),
+    path('login/', UserLogin.as_view(), name='login'),
+    path('logout/', UserLogout.as_view(), name='logout'),
     # на всякий случай
-    path('user', UserView.as_view(), name='user'),
+    path('user/', UserView.as_view(), name='user'),
 
     # обработка изменений User от админа
     path('', include(router.urls)),
     # path('api-user/', include('rest_framework.urls', namespace='rest_framework')),
 
     # сортировка по today, tomorrow and definiteDAY
-    path('/today', ForecastDayAPIView.as_view(), name='today'),  # главная страница
-    path('/tomorrow', ForecastDayAPIView.as_view(), name='tomorrow'),
-    path('/date', ForecastDayAPIView.as_view(), name='date'),  # прогноз на искомый день PastView
+    path('today/', ForecastDayAPIView.as_view(), name='today'),  # главная страница
+    path('tomorrow/', ForecastDayAPIView.as_view(), name='tomorrow'),
+    path('date/', ForecastDayAPIView.as_view(), name='date'),  # прогноз на искомый день PastView
 
-    path('/days', ForecastManyDayAPIView.as_view(), name='days'),  # главная страница (прогноз на 10 дней)
-    path('/month', ForecastManyDayAPIView.as_view(), name='month'),  # главная страница (прогноз на месяц)
+    path('days/', ForecastManyDayAPIView.as_view(), name='days'),  # главная страница (прогноз на 10 дней)
+    path('month/', ForecastManyDayAPIView.as_view(), name='month'),  # главная страница (прогноз на месяц)
 
     # new passwort
     path('accountUser/', SetNewPass.as_view(), name='accountUser'),  # личный кабинет пользователя со сменой пароля
@@ -54,15 +59,6 @@ urlpatterns = [
     # выбор статистики погоды SetViewEmailSuperUser
     # просто выдаёт email superuser
     path('emailSuperUser/', SetViewEmailSuperUser.as_view(), name='emailSuperUser'),  # выбор статистики погоды
-
-    path('admin/', admin.site.urls, name='adminPanel'),  # export const PROFILE_ADMIN_ROUTE = '/profileAdmin'
-
-    # request в нём есть ссесия и т.д.
-    # или токен хранить, пока валиден для пользователя (в каждом запросе запихивать или в заголовке или в отдельное поля)
-
-    # закинуть в статик файлы (картинки закинуть) сгунерить ссылки на них и напрямую во фронте вставить
-    # сделать отдельный роут, который выдаёт ссылки на картинки и фронт сам понимает куда что
-    # сессион сторедж фронт помещает (сбда же и реклама (новостью идёт) админ мог загружать файлы, возвращается объект с ссылками и т.д.)
 ]
 
 handler404 = pageNotFound
