@@ -39,7 +39,10 @@ export default class Weather {
             {id: 1, idTown: 1, minTemp: 12, maxTemp: 20, maxRainfall: 16, maxWindSpeed: 34},
             {id: 1, idTown: 1, minTemp: 12, maxTemp: 20, maxRainfall: 16, maxWindSpeed: 34},
         ]
-        this._clothes = []
+
+        this._clothes = [
+            "Куртка, футболка, джинсы, кроссовки"
+        ]
 
         this._city = [
             {id: 1, town: "Город", country: "Страна1"},

@@ -1,10 +1,25 @@
-import React from 'react';
-import {NavLink, useLocation} from "react-router-dom";
+import React, {useContext, useState} from 'react';
+import {NavLink, useLocation, useNavigate} from "react-router-dom";
 import {Button, Card, Container, Form} from "react-bootstrap";
-import {LOGIN_ROUTE, REGISTRATION_ROUTE} from "../utils/consts";
+import {HOME_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE} from "../utils/consts";
+import {login, registration} from "../http/userApi";
+import {Context} from "../index";
 
 const Auth = () => {
     document.body.style.background = "#FFFAF4";
+
+    const {user} = useContext(Context)
+    const {history} = useNavigate();
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const click = async () => {
+        let data = await login(email, password)
+        user.setUser(data)
+        user.setIsAuth(true)
+        history.navigate(HOME_ROUTE)
+    }
     return (
         <Container
             className="d-flex justify-content-center align-items-center"
@@ -16,16 +31,22 @@ const Auth = () => {
                 <Form.Control
                     className="mt-3"
                     placeholder="email"
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+
                 />
                 <h5 className="mt-4 me-left">Введите пароль:</h5>
                 <Form.Control
                     className="mt-3"
                     placeholder="password"
                     type="password"
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
                 />
                 <Button
                     variant={"outline-dark"}
                     className="mt-3 align-self-center"
+                    onClick={click}
                 >
                     Войти
                 </Button>

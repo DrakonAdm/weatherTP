@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {observer} from "mobx-react-lite";
-import {Button, Card, CardGroup, Container, Table} from "react-bootstrap";
+import {Button, Card, CardGroup, Col, Container, Form, Row, Table} from "react-bootstrap";
 import {ABNORMAL_ROUTE, ARCHIVE_ROUTE} from "../utils/consts";
 import {Context} from "../index";
 
@@ -31,7 +31,52 @@ const Abnormal = observer(() => {
                     </Button>
                 </Card>
             </CardGroup>
-            <Card style={{width: 900, backgroundColor: "#FFFAF4"}} className="p-5">
+            <Card style={{width: 900, backgroundColor: "#FFFAF4", borderWidth: 0}}
+                  className="d-flex align-items-center justify-content-center">
+                <Row>
+                    <Col>
+                        <Form.Control
+                            className="mt-3"
+                            placeholder="Название страны"
+                            /*value={name}
+                            onChange={e => setName(e.target.value)}*/
+                        />
+                    </Col>
+                    <Col>
+                        <Form.Control
+                            className="mt-3"
+                            placeholder="Название города"
+                            /*value={name}
+                            onChange={e => setName(e.target.value)}*/
+                        />
+                    </Col>
+                    <Col>
+                        <Form.Control
+                            /*                    value={purchase_date}
+                                                onChange={e => setPurchaseDate(e.target.value)}*/
+                            className="mt-3 button-menu"
+                            type="date"
+                        /></Col>
+                    <Col>
+                        <Form.Control
+                            /*                    value={purchase_date}
+                                                onChange={e => setPurchaseDate(e.target.value)}*/
+                            className="mt-3 button-menu"
+                            type="date"
+                        />
+                    </Col>
+                    <Col>
+                        <Button
+                            variant={"outline-dark"}
+                            className="p-2 mt-3 align-self-center"
+                            style={{width: 150, height: 40, fontSize: 12,}}
+                        >
+                            Показать статистику
+                        </Button>
+                    </Col>
+                </Row>
+            </Card>
+            <Card style={{width: 900, backgroundColor: "#FFFAF4", borderWidth: 0}} className="p-5">
                 <Table bordered hover7 size="sm" >
                     <thead className="text-center">
                     <tr style={{backgroundColor: "#EFF8FF"}} >

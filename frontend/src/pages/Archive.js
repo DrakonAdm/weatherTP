@@ -1,16 +1,26 @@
-import React, {useContext} from 'react';
-import {Button, ButtonGroup, Card, CardGroup, Container, Dropdown, Table, Form} from "react-bootstrap";
+import React, {useContext, useEffect, useState} from 'react';
+import {Button, ButtonGroup, Card, CardGroup, Container, Dropdown, Table, Form, Row, Col} from "react-bootstrap";
 import {
     ABNORMAL_ROUTE,
     ARCHIVE_ROUTE,
-    DATE_ROUTE,
 } from "../utils/consts";
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
+import {getStatistic} from "../http/weatherApi";
 
 const Archive = observer(() => {
     document.body.style.background = "#FFFAF4";
     const {weather} = useContext(Context);
+
+    const [date1, setDate1] = useState('')
+    const [date2, setDate2] = useState('')
+    const [country, setCountry] = useState('')
+    const [city, setCity] = useState('')
+
+    useEffect(() => {
+        getStatistic().then(data => weather.setStatistics(data))
+    }, [])
+
     return (
         <Container
             style={{height: window.innerHeight - 50, width: window.innerWidth - 500, backgroundColor: "#FFFAF4"}}
@@ -35,45 +45,52 @@ const Archive = observer(() => {
                     </Button>
                 </Card>
             </CardGroup>
-            <Card className="d-flex align-items-center text-center justify-content-center">
-            <ButtonGroup className="d-flex">
-                <Dropdown>
-                    <Dropdown.Toggle id="dropdown-basic" className="button_menu" variant="outline-dark">
-                        Выберите страну
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu>
-                        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
-                <Dropdown>
-                    <Dropdown.Toggle id="dropdown-basic" className="button_menu" variant="outline-dark">
-                        Выберите город
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu>
-                        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
-                <Form.Control
-                    /*                    value={purchase_date}
-                                        onChange={e => setPurchaseDate(e.target.value)}*/
-                    className="mt-3 button-menu"
-                    type="date"
-                />
-                <Form.Control
-                    /*                    value={purchase_date}
-                                        onChange={e => setPurchaseDate(e.target.value)}*/
-                    className="mt-3 button-menu"
-                    type="date"
-                />
-
-
-            </ButtonGroup>
+            <Card style={{width: 900, backgroundColor: "#FFFAF4", borderWidth: 0}}
+                  className="d-flex align-items-center justify-content-center">
+                <Row>
+                    <Col>
+                        <Form.Control
+                            className="mt-3"
+                            placeholder="Название страны"
+                            value={country}
+                            onChange={e => setCountry(e.target.value)}
+                        />
+                    </Col>
+                    <Col>
+                        <Form.Control
+                            className="mt-3"
+                            placeholder="Название города"
+                            value={city}
+                            onChange={e => setCity(e.target.value)}
+                        />
+                    </Col>
+                    <Col>
+                        <Form.Control
+                            value={date1}
+                            onChange={e => setDate1(e.target.value)}
+                            className="mt-3 button-menu"
+                            type="date"
+                        /></Col>
+                    <Col>
+                        <Form.Control
+                            value={date2}
+                            onChange={e => setDate2(e.target.value)}
+                            className="mt-3 button-menu"
+                            type="date"
+                        />
+                    </Col>
+                    <Col>
+                        <Button
+                            variant={"outline-dark"}
+                            className="p-2 mt-3 align-self-center"
+                            style={{width: 150, height: 40, fontSize: 12,}}
+                        >
+                            Показать статистику
+                        </Button>
+                    </Col>
+                </Row>
             </Card>
-            <Card style={{width: 900, backgroundColor: "#FFFAF4"}} className="p-5">
+            <Card style={{width: 900, backgroundColor: "#FFFAF4", borderWidth: 0}} className="p-5">
                 <Table bordered hover7 size="sm">
                     <thead className="text-center">
                     <tr style={{backgroundColor: "#EFF8FF"}}>

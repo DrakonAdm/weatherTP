@@ -3,10 +3,18 @@ import {observer} from "mobx-react-lite";
 import {Context} from "../index";
 import {Button, Card, Col, Container, Form, Row} from "react-bootstrap";
 import {CHANGE_AD_ROUTE, HOME_ROUTE, USERS_ROUTE} from "../utils/consts";
+import {useNavigate} from "react-router-dom";
 
 const ProfileUser = observer(() => {
     document.body.style.background = "#FFFAF4";
     const {user} = useContext(Context)
+    const history = useNavigate()
+
+    const logOut = () => {
+        user.setUser({})
+        user.setIsAuth(false)
+    }
+
     return (
         <Container>
             <Row>
@@ -26,6 +34,7 @@ const ProfileUser = observer(() => {
                             bottom: 200,
                             left: 100,
                         }}
+                        onClick={() => logOut()}
                     >
                         Выйти
                     </Button> {/*тут как то прописать логику выхода из лк*/}
@@ -41,7 +50,7 @@ const ProfileUser = observer(() => {
                         }}
                     >
                         Удалить аккаунт
-                    </Button> {/*тут как то прописать логику выхода из лк*/}
+                    </Button> {/*тут логика выхода из лк*/}
                 </Col>
                 <Col>
                     <Card className="p-3" style={{width: 400, borderWidth: 0, backgroundColor: "#FFFAF4"}}>

@@ -37,7 +37,7 @@ const ProfileAdmin = observer ( () => {
                 href={HOME_ROUTE}
             >
                 Выйти
-            </Button> {/*тут как то прописать логику выхода из лк*/}
+            </Button> {/*тут прописать логику выхода из лк*/}
         </Container>
     );
 });

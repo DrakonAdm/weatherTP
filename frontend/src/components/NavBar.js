@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {Button, Container, Nav, Navbar, Form, NavDropdown} from "react-bootstrap";
-import {NavLink, Route,BrowserRouter as Router, Routes} from "react-router-dom";
+import {NavLink, Route, BrowserRouter as Router, Routes, useNavigate} from "react-router-dom";
 import {
     HOME_ROUTE,
     STATISTIC_ROUTE,
@@ -13,6 +13,7 @@ import '../components/App.css'
 
 const NavBar = observer( () => {
     const {user} = useContext(Context)
+
     return (
         <>
             <Navbar className='navbar-default'>

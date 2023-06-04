@@ -37,9 +37,7 @@ const Tomorrow = observer(() => {
                 <Card style={{width: 900, borderWidth: 3, backgroundColor: "#EFF8FF"}} className="text-center">
                     {/*<Card.Img variant="top" src="солнце.png" />*/}
                     <h4>Рекомендуемая одежда на день</h4> {/*хз как ее будем брать*/}
-                    <h5>Низ: брюки</h5>
-                    <h5>Верх: футболка, ветровка</h5>
-                    <h5>Дополнительно: кепка</h5>
+                    <h5>{weather.clothes}</h5>
                 </Card>
             </Card>
         </Container>
