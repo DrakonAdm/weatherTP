@@ -1,48 +1,53 @@
 from datetime import date
-
+import os
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+from django.utils.translation import gettext_lazy as _
+from django.contrib import auth
+from django.contrib.auth.hashers import make_password
 
 
-# class MyUserManager(BaseUserManager):
-#
-#     def _create_user(self, nickname, email, password, **extra_fields):
-#         if len(password) < 8:
-#             raise ValueError('Минимальная длина пароля 8 символов')
-#         elif len(nickname) < 4:
-#             raise ValueError('Минимальная длина никнейма 4 символов')
-#
-#         user = User(
-#             nickname=nickname,
-#             email=email,
-#             **extra_fields
-#         )
-#
-#         user.set_password(password)
-#         user.save()
-#         return user
-#
-#     def create_user(self, nickname, email, password):
-#         return self._create_user(nickname, email, password)
-#
-#     def create_superuser(self, nickname, email, password):
-#         return self._create_user(nickname, email, password, is_staff=True, is_superuser=True)
-#
-#
-# class User(AbstractBaseUser, PermissionsMixin):
-#     id = models.AutoField(primary_key=True, unique=True)
-#     nickname = models.CharField(max_length=100, unique=True)
-#     email = models.CharField()
-#     is_active = models.BooleanField(default=True)
-#     is_staff = models.BooleanField(default=False)
-#     is_superuser = models.BooleanField(default=False)
-#
-#     USERNAME_FIELD = 'nickname'
-#
-#     objects = MyUserManager()
-#
-#     def __str__(self):
-#         return self.nickname
+class UserManager(BaseUserManager):
+    use_in_migrations = True
+
+    def create_user(self, nickname, password=None, **extra_fields):
+        if not nickname:
+            raise ValueError('An email is required.')
+        if not password:
+            raise ValueError('A password is required.')
+
+        user = self.model(nickname=nickname, password=password, **extra_fields)
+        user.save()
+        return user
+
+    def create_superuser(self, nickname, password=None, **extra_fields):
+        if not nickname:
+            raise ValueError('An email is required.')
+        if not password:
+            raise ValueError('A password is required.')
+
+        return self._create_user(nickname, password, is_superuser=True, **extra_fields)
+
+
+class User(AbstractBaseUser, PermissionsMixin):
+    email = models.EmailField(_('Email'), null=True, blank=True, unique=False)
+    nickname = models.CharField(_('Имя'), max_length=255, null=False, blank=False, unique=True)
+
+    city = models.CharField(_('City'), null=True, blank=True, unique=False)
+    country = models.CharField(_('Country'), null=True, blank=True, unique=False)
+
+    is_superuser = models.BooleanField(default=False)
+
+    EMAIL_FIELD = 'email'
+    USERNAME_FIELD = 'nickname'
+
+    objects = UserManager()
+
+    def get_fullname(self):
+        return f"{self.nickname[0]}. "
+
+    def __str__(self):
+        return f"{self.country[0]}, {self.city[0]}.  "
 
 
 class Location(models.Model):
@@ -53,7 +58,7 @@ class Location(models.Model):
     # image = models.BinaryField(null=True)
 
     def __str__(self):
-        return self.city
+        return f"{self.country[0]}, {self.city[0]}.  "
 
     class Meta:
         managed = False
@@ -91,6 +96,7 @@ class Past(models.Model):
 
 
 class Abnormal(models.Model):
+    year = models.IntegerField(max_length=4, unique=True)
     minT = models.OneToOneField(Past, on_delete=models.SET_NULL, null=True, related_name="pastMinT")
     maxT = models.OneToOneField(Past, on_delete=models.SET_NULL, null=True, related_name="pastMaxT")
     maxWS = models.OneToOneField(Past, on_delete=models.SET_NULL, null=True, related_name="pastWS")

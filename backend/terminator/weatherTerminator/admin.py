@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Forecast, Location, Past, Abnormal
+from .models import Forecast, Location, Past, Abnormal, User
 
-# admin.site.register(User)
+admin.site.register(User)
 
 admin.site.register(Forecast)
 admin.site.register(Location)
