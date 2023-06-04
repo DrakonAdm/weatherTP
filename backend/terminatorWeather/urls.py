@@ -5,14 +5,14 @@ from django.contrib import admin
 from .views import *
 from django.contrib.auth import views
 from rest_framework import routers
-from rest_framework_swagger.views import get_swagger_view
+
+from terminator.yasg import urlpatterns1
+# работает и так
 
 app_name = 'terminatorWeather'
 
 router = routers.SimpleRouter()
 router.register(r'listUser', UserViewSets)
-
-schema_view = get_swagger_view(title='Swagger TerminatorWeather')
 
 
 # авторизация и аунтификация через Token
@@ -24,10 +24,12 @@ schema_view = get_swagger_view(title='Swagger TerminatorWeather')
 #     path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
 
 urlpatterns = [
-    path('swagger/', schema_view),  # чтобы открыть /
 
     # advertisement
-    path('advertisement/', AdvertisementAPIView.as_view(), name='advertisement'),  # обработка рекламы
+    path('advertisementPOST/', AdvertisementAPIView.as_view(), name='advertisementPOST'),  # post - сохранение файла
+    path('advertisementGET/', ImageAPIView.as_view(), name='advertisementGET'),  # get - выдача файла
+
+    path('listCC/', GetViewAPICountryCity.as_view(), name='listCC'),  # списки стран и городов
 
     # авторизация и аутентификация по простому https://github.com/dotja/authentication_app_react_django_rest
     path('register/', UserRegister.as_view(), name='register'),
@@ -60,6 +62,9 @@ urlpatterns = [
     # просто выдаёт email superuser
     path('emailSuperUser/', SetViewEmailSuperUser.as_view(), name='emailSuperUser'),  # выбор статистики погоды
 ]
+
+urlpatterns += urlpatterns1
+# http://127.0.0.1:8000/swagger/
 
 handler404 = pageNotFound
 

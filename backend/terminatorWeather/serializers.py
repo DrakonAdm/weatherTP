@@ -101,3 +101,9 @@ class AbnormalSerializer(serializers.ModelSerializer):
                   'maxWS',
                   'maxP',
                   'city')
+
+
+class LocationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Location
+        fields = ('id', 'country', 'city')
