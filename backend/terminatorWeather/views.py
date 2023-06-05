@@ -305,7 +305,7 @@ class AdvertisementAPIView(APIView):
     def post(self, request, *args, **kwargs):
         if request.user.is_superuser:
             image_file = request.FILES['file']
-            file_path = os.path.join('static', 'image', image_file.name)
+            file_path = os.path.join(settings.STATIC_ROOT, 'image', image_file.name)
             with open(file_path, 'wb+') as destination:
                 for chunk in image_file.chunks():
                     destination.write(chunk)
