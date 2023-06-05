@@ -65,9 +65,6 @@ class Location(models.Model):
     country = models.CharField(max_length=100)
     city = models.CharField(max_length=100)
 
-    # name = models.CharField(max_length=100)
-    # image = models.BinaryField(null=True)
-
     def __str__(self):
         return f"{self.country[0]}, {self.city[0]}.  "
 
@@ -78,9 +75,9 @@ class Location(models.Model):
 
 class Forecast(models.Model):
     date = models.DateField()
-    minTem = models.IntegerField()
-    maxTem = models.IntegerField()
-    averageTem = models.IntegerField()
+    minTem = models.FloatField()
+    maxTem = models.FloatField()
+    averageTem = models.FloatField()
     atmosphericPressure = models.IntegerField(validators=[MinValueValidator(0)])
     windSpeed = models.IntegerField(validators=[MinValueValidator(0)])
     precipitation = models.DecimalField(validators=[MinValueValidator(0)], max_digits=5, decimal_places=2)
@@ -93,9 +90,9 @@ class Forecast(models.Model):
 
 class Past(models.Model):
     date = models.DateField()
-    minTem = models.IntegerField()
-    maxTem = models.IntegerField()
-    averageTem = models.IntegerField()
+    minTem = models.FloatField()
+    maxTem = models.FloatField()
+    averageTem = models.FloatField()
     atmosphericPressure = models.IntegerField(validators=[MinValueValidator(0)])
     windSpeed = models.IntegerField(validators=[MinValueValidator(0)])
     precipitation = models.DecimalField(validators=[MinValueValidator(0)], max_digits=5, decimal_places=2)
@@ -107,7 +104,7 @@ class Past(models.Model):
 
 
 class Abnormal(models.Model):
-    year = models.IntegerField(unique=True)
+    year = models.IntegerField()
     minT = models.OneToOneField(Past, on_delete=models.SET_NULL, null=True, related_name="pastMinT")
     maxT = models.OneToOneField(Past, on_delete=models.SET_NULL, null=True, related_name="pastMaxT")
     maxWS = models.OneToOneField(Past, on_delete=models.SET_NULL, null=True, related_name="pastWS")
