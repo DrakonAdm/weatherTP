@@ -9,8 +9,9 @@ from .scripts import *
 
 def activate_scripts():
     check_and_move_forecast()
-    updateForecastWeather()
-    get_weather_forecast()
+    update_Abnormal()
+    updateForecastToday()
+    updateForecastThirtySecondDay()
     # print("Good activate228")
 
 

@@ -1,3 +1,6 @@
+import os
+from django.http import FileResponse
+from django.conf import settings
 from django.contrib.auth import logout, login, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
@@ -274,6 +277,21 @@ class SetViewEmailSuperUser(APIView):
         return Response({'error': 'Incorrect password'})
 
 
+class GetViewAPICountryCity(APIView):
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            if 'country' in request.query_params:
+                # If 'country' key is present, return sorted list of cities for that country
+                cities = Location.objects.filter(country=request.query_params['country']).order_by('city')
+                serializer = LocationSerializer(cities, many=True)
+                return Response(serializer.data)
+            else:
+                # If 'country' key is not present, return list of countries
+                countries = Location.objects.values('country').distinct().order_by('country')
+                return Response({'countries': [c['country'] for c in countries]})
+        return Response({'error': 'Incorrect password'})
+
+
 class UserViewSets(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
@@ -284,16 +302,25 @@ class UserViewSets(viewsets.ModelViewSet):
 
 
 class AdvertisementAPIView(APIView):
-    def get(self, request, *args, **kwargs):
-        if request.user.is_superuser:
-            """выдать страниицы для выбора, где заменять рекламу"""
-            """Загрузка файла API django - можно через admin поле"""
-        return Response({'error': 'Incorrect password'})
-
     def post(self, request, *args, **kwargs):
         if request.user.is_superuser:
-            """заменить img рекламы"""
+            image_file = request.FILES['file']
+            file_path = os.path.join(settings.STATIC_ROOT, 'image', image_file.name)
+            with open(file_path, 'wb+') as destination:
+                for chunk in image_file.chunks():
+                    destination.write(chunk)
+            return Response({'success': 'Image uploaded'})
         return Response({'error': 'Incorrect password'})
+
+
+class ImageAPIView(APIView):
+    def get(self, request, *args, **kwargs):
+        image_name = kwargs.get('image_name')
+        file_path = os.path.join(settings.STATIC_ROOT, 'image', image_name)
+        try:
+            return FileResponse(open(file_path, 'rb'), content_type='image/jpeg')
+        except FileNotFoundError:
+            return Response({'error': 'Image not found'}, status=status.HTTP_404_NOT_FOUND)
 
 
 class SetNewPass(APIView):

@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_apscheduler',
     'rest_framework_swagger',
+    'drf_yasg',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +54,17 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # 'rest_framework.middleware.AuthenticationMiddleware',
     # 'rest_framework.middleware.AuthorizationMiddleware',
+
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+]
+
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3030',
+]
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    'http://localhost:3030',
 ]
 
 ROOT_URLCONF = 'terminator.urls'
