@@ -7,7 +7,7 @@ import {Context} from "../index";
 
 const Month = observer(() => {
     document.body.style.background = "#FFFAF4";
-    const {weather} = useContext(Context)
+    const {data} = useContext(Context)
     const {days} = [
         "Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"
     ]
@@ -54,7 +54,7 @@ const Month = observer(() => {
             </Row>
                 <Col>
                     <Row md={7} classname="d-flex">
-                        {weather.weather.map(weather =>
+                        {data.weather.map(weather =>
                             <DayItem key={weather.id} weather={weather}/>
                         )}
                     </Row>

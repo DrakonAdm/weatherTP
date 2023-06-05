@@ -1,17 +1,22 @@
 import {$host, $authHost} from "./index";
 
-export const getWeatherDay = async (country, city, date) => {
-    const response = await $host.get('api/weather', + country + city + date) //тут api по которому получать
+export const getWeatherMain = async () => {
+    const response = await $host.get('api/today')
     return response
 }
 
-export const getWeather10Days = async (country, city) => {
-    const response = await $host.get('api/weather/10days', + country + city)
+export const getWeatherTomorrow = async (date) => {
+    const response = await $host.get('api/tomorrow', + date)
     return response
 }
 
-export const getWeatherMonth = async (country, city) => {
-    const response = await $host.get('api/weather/month', + country + city)
+export const getWeather10Days = async () => {
+    const response = await $host.get('api/weather/10days')
+    return response
+}
+
+export const getWeatherMonth = async () => {
+    const response = await $host.get('api/weather/month')
     return response
 }
 
@@ -23,6 +28,11 @@ export const getStatistic = async (country, city, date1, date2) => {
 export const getAbnormal = async (country, city, date1, date2) => {
     const response = await $host.get('api/weather/abnormal', + country + city + date1 + date2)
     return response
+
+
+
+
+
 }
 
 

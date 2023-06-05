@@ -6,7 +6,7 @@ import {Context} from "../index";
 
 const Abnormal = observer(() => {
     document.body.style.background = "#FFFAF4";
-    const {weather} = useContext(Context);
+    const {data} = useContext(Context);
     return (
         <Container
             style={{height: window.innerHeight - 50, width: window.innerWidth - 500, backgroundColor: "#FFFAF4"}}
@@ -87,7 +87,7 @@ const Abnormal = observer(() => {
                     </tr>
                     </thead>
                     <tbody className="text-center">
-                    {weather.abnormal.map(statistic =>
+                    {data.abnormal.map(statistic =>
                         <tr key={statistic.id}>
                             <td>{statistic.minTemp}</td>
                             <td>{statistic.maxTemp}</td>

@@ -7,7 +7,10 @@ import {Context} from "../index";
 
 const Home = observer(() => {
     document.body.style.background = "#FFFAF4";
-    const {weather} = useContext(Context);
+    const {data} = useContext(Context);
+
+
+
     return (
         <Container>
             <Card style={{width: 1000, borderWidth: 0, backgroundColor: "#FFFAF4"}} className="p-4 d-flex">
@@ -21,22 +24,21 @@ const Home = observer(() => {
                 </ButtonGroup>
             </Card>
             <Card style={{width: 1000, borderWidth: 0, backgroundColor: "#FFFAF4"}} className="p-4 d-flex">
-                <h3>{weather.weather[1].date}</h3> {/*здесь как-то надо получать определенный день, чтобы для него уже выводить все*/}
+                <h3>{data.weather[1].date}</h3> {/*здесь как-то надо получать определенный день, чтобы для него уже выводить все*/}
                 <CardGroup style={{width: 900}}>
                     <Card style={{borderWidth: 3, backgroundColor: "#EFF8FF"}} className="p-4 text-center">
-                        {/*<Card.Img variant="top" src="солнце.png" />*/}
-                        <h3>Днем: {weather.weather[1].maxTemp}</h3>
-                        <h4>Ночью: {weather.weather[1].minTemp}</h4>
+                        <h3>Днем: {data.weather[1].maxTemp}</h3>
+                        <h4>Ночью: {data.weather[1].minTemp}</h4>
                     </Card>
                     <Card style={{borderWidth: 3, backgroundColor: "#EFF8FF"}} className="p-4 text-center">
-                        <h7>Давление: {weather.weather[1].pressure}</h7>
-                        <h7>Скорость ветра: {weather.weather[1].windSpeed} </h7>
-                        <h7>Осадки: {weather.weather[1].rainfall}</h7>
+                        <h7>Давление: {data.weather[1].pressure}</h7>
+                        <h7>Скорость ветра: {data.weather[1].windSpeed} </h7>
+                        <h7>Осадки: {data.weather[1].rainfall}</h7>
                     </Card>
                 </CardGroup>
                 <Card style={{width: 900, borderWidth: 3, backgroundColor: "#EFF8FF"}} className="text-center">
                     <h4>Рекомендуемая одежда на день</h4>
-                    <h5>{weather.clothes}</h5>
+                    <h5>{data.clothes}</h5>
                 </Card>
             </Card>
         </Container>

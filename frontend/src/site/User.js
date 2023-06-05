@@ -3,8 +3,8 @@ import {makeAutoObservable} from "mobx";
 export default class User {
     constructor() {
         this._isAuth = true
-        this._isAdmin = false
-        this._user = {}
+        this._isAdmin = true
+        this._user = {name: "Имя", city: "Воронеж", country: "Россия", email: "1111@mail.ru" }
         makeAutoObservable(this)
     }
 

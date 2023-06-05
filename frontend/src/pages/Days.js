@@ -7,7 +7,7 @@ import {observer} from "mobx-react-lite";
 
 const Days = observer(() => {
     document.body.style.background = "#FFFAF4";
-    const {weather} = useContext(Context)
+    const {data} = useContext(Context)
     return (
         <Container>
             <Card style={{width: 1000, borderWidth: 0, backgroundColor: "#FFFAF4"}} className="p-4 d-flex">
@@ -23,7 +23,7 @@ const Days = observer(() => {
             <Card style={{width: 1000, borderWidth: 0, backgroundColor: "#FFFAF4"}} className="p-4 d-flex">
                 <Col>
                     <Row md={5} classname="d-flex">
-                        {weather.weather.map(weather =>
+                        {data.weather.map(weather =>
                             <DayItem key={weather.id} weather={weather}/>
                         )}
                     </Row>

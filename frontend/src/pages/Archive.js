@@ -10,7 +10,7 @@ import {getStatistic} from "../http/weatherApi";
 
 const Archive = observer(() => {
     document.body.style.background = "#FFFAF4";
-    const {weather} = useContext(Context);
+    const {data} = useContext(Context);
 
     const [date1, setDate1] = useState('')
     const [date2, setDate2] = useState('')
@@ -18,7 +18,7 @@ const Archive = observer(() => {
     const [city, setCity] = useState('')
 
     useEffect(() => {
-        getStatistic().then(data => weather.setStatistics(data))
+        getStatistic().then(data => data.setStatistics(data))
     }, [])
 
     return (
@@ -104,7 +104,7 @@ const Archive = observer(() => {
                     </tr>
                     </thead>
                     <tbody className="text-center">
-                    {weather.statistics.map(statistic =>
+                    {data.statistics.map(statistic =>
                         <tr key={statistic.id}>
                             <td>{statistic.date}</td>
                             <td>{statistic.minTemp}</td>

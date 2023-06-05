@@ -6,7 +6,7 @@ import {USERS_ROUTE} from "../utils/consts";
 
 const Users = observer ( () => {
     document.body.style.background = "#FFFAF4";
-    const {users} = useContext(Context)
+    const {data} = useContext(Context)
     return (
         <Container>
             <Card style={{width: 1000, backgroundColor: "#FFFAF4", borderWidth: 0}} className="p-4">
@@ -27,7 +27,7 @@ const Users = observer ( () => {
                         </tr>
                         </thead>
                         <tbody className="text-center">
-                        {users.listUsers.map(user =>
+                        {data.listUsers.map(user =>
                             <tr key={user.id}>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>

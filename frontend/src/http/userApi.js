@@ -6,7 +6,7 @@ export const registration = async (email, password, country, city) => {
 }
 
 export const login = async (email, password) => {
-    const response = await $host.post('api/auth/login', {email, password})
+    const response = await $host.post('api/login', {email, password})
     return response
 }
 

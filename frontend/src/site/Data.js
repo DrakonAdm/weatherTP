@@ -1,6 +1,8 @@
 import {makeAutoObservable} from "mobx";
+import {Dropdown} from "react-bootstrap";
+import React from "react";
 
-export default class Weather {
+export default class Data {
     constructor() {
         this._weather = [
             {id: 1, date:'23/03/23', minTemp: 12, maxTemp: 20, avgTemp: 16, pressure: 740, windSpeed: 3, rainfall: 0, idCity: 1},
@@ -52,6 +54,28 @@ export default class Weather {
             {id: 1, town: "Город4", country: "Страна2"},
             {id: 1, town: "Город5", country: "Страна2"},
         ]
+
+
+        this._listUsers = [
+            {id: 1, name: "Имя", email: "Почта"},
+            {id: 1, name: "Имя", email: "Почта"},
+            {id: 1, name: "Имя", email: "Почта"},
+            {id: 1, name: "Имя", email: "Почта"},
+            {id: 1, name: "Имя", email: "Почта"},
+            {id: 1, name: "Имя", email: "Почта"},
+        ]
+
+
+        this._pages = [
+            {page: "Главная страница", image: "public/вгу.jpg"},
+            {page: "Прогноз на завтра", image: ""},
+            {page: "Прогноз на 10 дней", image: ""},
+            {page: "Прогноз на месяц", image: ""},
+            {page: "Прогноз на дату", image: ""},
+            {page: "Статистика за прошедшие годы", image: ""}
+        ]
+
+
         makeAutoObservable(this)
     }
 
@@ -71,6 +95,14 @@ export default class Weather {
         this._clothes = clothes
     }
 
+    setPages(pages) {
+        this._images = pages
+    }
+
+    setUsers(users) {
+        this._listUsers = users
+    }
+
     get weather() {
         return this._weather
     }
@@ -86,5 +118,14 @@ export default class Weather {
     get clothes() {
         return this._clothes
     }
+
+    get listUsers() {
+        return this._listUsers
+    }
+
+    get pages() {
+        return this._pages
+    }
+
 
 }
