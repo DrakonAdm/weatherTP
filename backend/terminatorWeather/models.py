@@ -1,3 +1,5 @@
+import os
+
 from django.contrib.auth.hashers import make_password
 from django.core.validators import MinValueValidator
 from django.db import models
@@ -62,11 +64,23 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 
 class Location(models.Model):
-    country = models.CharField(max_length=100)
+    country = models.CharField(max_length=100, null=True)
     city = models.CharField(max_length=100)
 
     def __str__(self):
-        return f"{self.country[0]}, {self.city[0]}.  "
+        return f"{self.country}, {self.city}."
+
+    def collectModelLocation(self):
+        # Открываем файл с данными
+        file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'listLocation.txt')
+        with open(file_path, 'r') as f:
+            # Читаем строки из файла
+            lines = f.readlines()
+            for line in lines:
+                # Обрабатываем строку и создаем новый объект модели Location
+                name, description = line.strip().split(' ')
+                location = Location.objects.create(name=name, description=description)
+                location.save()
 
     class Meta:
         managed = True

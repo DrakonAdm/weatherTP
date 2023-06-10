@@ -110,6 +110,9 @@ def forecastClothes(queryset):
     # queryset[0].minTem
     # queryset[0].averageTem
 
+    if 'maxTem' not in queryset:
+        return None, None, None
+
     if queryset[0].maxTem > 30 or queryset[0].minTem > 30 or queryset[0].averageTem > 30:
         return "Слишком жарко", "Сидите дома", "Вам нужен вентилятор"
 

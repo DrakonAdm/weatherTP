@@ -39,6 +39,7 @@ urlpatterns = [
     path('user/', UserView.as_view(), name='user'),
 
     # обработка изменений User от админа
+    # обработка изменений User от админа
     path('', include(router.urls)),
     # path('api-user/', include('rest_framework.urls', namespace='rest_framework')),
 
@@ -54,7 +55,7 @@ urlpatterns = [
     path('accountUser/', SetNewPass.as_view(), name='accountUser'),  # личный кабинет пользователя со сменой пароля
 
     path('statisticPast/', PastView.as_view(), name='statisticPast'),  # статистика прошедшей погоды
-    path('statisticAbnormal/', AbnormalView.as_view(), name='statisticAbnormal'),  # статистика прошедшей погоды
+    path('statisticAbnormal/', AbnormalView.as_view(), name='statisticAbnormal'),  # статистика аномальной погоды
 
     # просто выдаёт nickname пользователя
     path('choiceUser/', SetViewNicknameUser.as_view(), name='choiceUser'),
