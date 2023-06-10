@@ -88,7 +88,7 @@ def updateForecastToday():
 
 
 def updateForecastThirtySecondDay():
-    today = timezone.now().date() + timedelta(days=32)
+    today = timezone.now().date() + timedelta(days=30)
     available_cities = Location.objects.values_list('id', flat=True)
 
     # Loop through the available cities
@@ -143,3 +143,4 @@ def updateForecastWeather(forecast):
             #     forecast.precipitation = forecast_item.get('precipitation', {}).get('amount')
             #     forecast.save()
             #     прогнозируемая дата вперёд на 2
+

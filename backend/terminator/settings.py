@@ -142,29 +142,6 @@ AUTH_USER_MODEL = 'terminatorWeather.User'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    # подумать сколько пагинация будет
-    'PAGE_SIZE': 10,
-
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    ),
-
-    # возможно убрать
-    'DEFAULT_RENDERER_CLASSES': [
-        'rest_framework.renderers.JSONRenderer',
-        #  'rest_framework.renderers.BrowsableAPIRenderer'
-    ],
-
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        # 'rest_framework_simplejwt.authentication.JWTAuthentication',
-        # 'rest_framework_simplejwt.authentication.TokenAuthentication',
-        # 'rest_framework_simplejwt.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-    ],
-}
-
 SCHEDULER_AUTOSTART = False
 
 REST_FRAMEWORK = {
