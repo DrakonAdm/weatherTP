@@ -33,7 +33,7 @@
 # Код приложения:
 
 [Backend](https://github.com/DrakonAdm/weatherTP/tree/main/backend)  
-[Fronted]()  
+[Fronted](https://github.com/DrakonAdm/weatherTP/tree/main/frontend)  
 
 # Видео:
 [Видео демонстрация серверной части web-приложения](https://drive.google.com/file/d/1Ss24YtUy8NkiawfMVtq2UmfWH_GMRuM9/view?usp=sharing)  
