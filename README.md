@@ -14,12 +14,12 @@
 
 ---
 
-### Сервисы:  
+# Сервисы:  
 [Miro board](https://miro.com/app/board/uXjVPjUNL7U=/)  
 [Таск-менеджер Yougile](https://ru.yougile.com/board/p64wtvbqm5zy)  
 [Макеты в Figma](https://www.figma.com/file/66WTdzpRBW6fObyjup7Q2C/WeatherTP?node-id=0%3A1&t=F8ytIwN6wepROoCz-1)
       
-### Документация: 
+# Документация: 
 [Курсовая работа.pdf](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/КурсоваяТП.pdf)  
 [Курсовая работа.docx](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/КурсоваяТП.docx)  
 [Техническое задание.pdf](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Техническое%20задание.pdf)  
@@ -28,7 +28,7 @@
 [Диаграммы.docx](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Диаграммы.docx)  
 [Презентация.pptx](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Команда%203-6.%20Погода%20от%20Терминатора.pptx)
 
-### Видео:
+# Видео:
 [Видео демонстрация серверной части web-приложения](https://drive.google.com/file/d/1Ss24YtUy8NkiawfMVtq2UmfWH_GMRuM9/view?usp=sharing)  
 
 
