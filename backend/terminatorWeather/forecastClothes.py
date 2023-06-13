@@ -56,7 +56,7 @@ def outputSTR(value):
         return "Плащ, рубашка, брюки, панама, кроссовки"
 
     if 49 <= value < 52:
-        return "Плащ, свитер, брюки, шапка, кроссовки"
+        return "Плащ, майка, брюки, кепка, кроссовки"
 
     if 52 <= value < 55:
         return "Плащ, водолазка, шорты/юбка, кепка, кроссовки"
@@ -110,7 +110,7 @@ def forecastClothes(queryset):
     # queryset[0].minTem
     # queryset[0].averageTem
 
-    if 'maxTem' not in queryset:
+    if not queryset[0].maxTem:
         return None, None, None
 
     if queryset[0].maxTem > 30 or queryset[0].minTem > 30 or queryset[0].averageTem > 30:
@@ -385,18 +385,18 @@ def forecastClothes(queryset):
     forecast = ctrl.ControlSystemSimulation(clothing_ctrl)
 
     # Set the input values from the queryset
-    forecast.input['temperature'] = queryset[0].maxTem
-    forecast.input['wind_speed'] = queryset[0].windSpeed
-    forecast.input['precipitation'] = queryset[0].precipitation
+    forecast.input['temperature'] = float(queryset[0].maxTem)
+    forecast.input['wind_speed'] = float(queryset[0].windSpeed)
+    forecast.input['precipitation'] = float(queryset[0].precipitation)
     # Compute the fuzzy output
     forecast.compute()
     maxStr = forecast.output['clothing']
 
-    forecast.input['temperature'] = queryset[0].minTem
+    forecast.input['temperature'] = float(queryset[0].minTem)
     forecast.compute()
     minStr = forecast.output['clothing']
 
-    forecast.input['temperature'] = queryset[0].averageTem
+    forecast.input['temperature'] = float(queryset[0].averageTem)
     forecast.compute()
     averageStr = forecast.output['clothing']
 
