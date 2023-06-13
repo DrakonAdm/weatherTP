@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from apscheduler.schedulers.background import BackgroundScheduler
 from django_apscheduler.jobstores import DjangoJobStore, register_events, DjangoMemoryJobStore
 import sys
@@ -9,10 +11,11 @@ from .scripts import *
 
 def activate_scripts():
     check_and_move_forecast()
-    update_Abnormal()
     updateForecastToday()
+    # createMonth()
     updateForecastThirtySecondDay()
-    # print("Good activate228")
+    update_Abnormal()
+    print("Good activate228")
 
 
 def start():
@@ -23,7 +26,9 @@ def start():
     scheduler = BackgroundScheduler(job_defaults=job_defaults)
     # scheduler.add_jobstore(DjangoMemoryJobStore(), "default")
     # run this job every 24 hours
-    scheduler.add_job(activate_scripts, 'interval', hours=24, name='refreshWeather', jobstore='default')
+    # scheduler.add_job(activate_scripts, 'interval', hours=24, name='refreshWeather', jobstore='default')
+    scheduler.add_job(activate_scripts, 'cron', hour=0, minute=10, name='refreshWeather', jobstore='default')
+    # next_run_time=datetime.now()
     register_events(scheduler)
     scheduler.start()
-    # print("Scheduler started...", file=sys.stdout)
+    print("Scheduler started...", file=sys.stdout)
