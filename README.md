@@ -14,7 +14,7 @@
 ### Сервисы:  
 [Miro board](https://miro.com/app/board/uXjVPjUNL7U=/)  
 [Таск-менеджер Yougile](https://ru.yougile.com/board/p64wtvbqm5zy)  
-[Макеты в Figma](https://www.figma.com/file/66WTdzpRBW6fObyjup7Q2C/WeatherTP?node-id=0%3A1&t=F8ytIwN6wepROoCz-1)
+[Макеты в Figma](https://www.figma.com/file/66WTdzpRBW6fObyjup7Q2C/WeatherTP?node-id=0%3A1&t=F8ytIwN6wepROoCz-1)  
 [Swagger](http://158.160.70.99:30/swagger/)
       
 ### Документация: 
