@@ -87,9 +87,9 @@ class ForecastDayAPIView(generics.ListAPIView):
 
         maxStr, averageStr, minStr = forecastClothes(queryset)
 
-        queryset = queryset.annotate(maxTemperature=models.Value(maxStr, output_field=models.CharField()))
-        queryset = queryset.annotate(averageTemperature=models.Value(averageStr, output_field=models.CharField()))
-        queryset = queryset.annotate(minTemperature=models.Value(minStr, output_field=models.CharField()))
+        queryset = queryset.annotate(maxClothes=models.Value(maxStr, output_field=models.CharField()))
+        queryset = queryset.annotate(averageClothes=models.Value(averageStr, output_field=models.CharField()))
+        queryset = queryset.annotate(minClothes=models.Value(minStr, output_field=models.CharField()))
 
         data = {'results': list(queryset.values())}
         return JsonResponse(data)
@@ -123,8 +123,8 @@ class ForecastManyDayAPIView(generics.ListAPIView):
             queryset = Forecast.objects.filter(city__city=city)
         else:
             queryset = Forecast.objects.filter(city__city=city, city__country=country)
-        if 'days' in request.query_params:
-            queryset = queryset.filter(date__lte=timezone.now().date() + timedelta(days=9))
+        # if 'days' in request.query_params:
+        #     queryset = queryset.filter(date__lte=timezone.now().date() + timedelta(days=9))
 
         if not queryset.exists():
             return JsonResponse(
