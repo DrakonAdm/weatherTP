@@ -49,7 +49,7 @@ urlpatterns = [
     path('date/', ForecastDayAPIView.as_view(), name='date'),  # прогноз на искомый день PastView
 
     path('days/', ForecastManyDayAPIView.as_view(), name='days'),  # главная страница (прогноз на 10 дней)
-    path('month/', ForecastManyDayAPIView.as_view(), name='month'),  # главная страница (прогноз на месяц)
+    # path('month/', ForecastManyDayAPIView.as_view(), name='month'),  # главная страница (прогноз на месяц)
 
     # new passwort
     path('accountUser/', SetNewPass.as_view(), name='accountUser'),  # личный кабинет пользователя со сменой пароля

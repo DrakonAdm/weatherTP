@@ -130,7 +130,7 @@ weather_forecast_day = swagger_auto_schema(
 )
 
 weather_forecast_days = swagger_auto_schema(
-    operation_summary='Month / Ten day',
+    operation_summary='Five day',
     tags=['Weather Forecast'],
     responses={
         204: 'No Content',
@@ -141,8 +141,8 @@ weather_forecast_days = swagger_auto_schema(
         openapi.Parameter('city', openapi.IN_QUERY, description="Yours city (optional)", type=openapi.TYPE_STRING),
         openapi.Parameter('country', openapi.IN_QUERY, description="Yours country (optional)",
                           type=openapi.TYPE_STRING),
-        openapi.Parameter('days', openapi.IN_QUERY, description="Ten day: days", type=openapi.TYPE_STRING,
-                          format="date"),
+        # openapi.Parameter('days', openapi.IN_QUERY, description="Ten day: days", type=openapi.TYPE_STRING,
+        #                   format="date"),
     ]
 )
 

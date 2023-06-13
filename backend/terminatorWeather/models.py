@@ -142,14 +142,19 @@ class Past(models.Model):
 
                 # Получаем объект Location для данного города
                 location = Location.objects.get(city=city_name)
+                if int(values[i + 6]) == (-1000):
+                    ws = 0
+                else:
+                    ws = int(values[i + 6])
 
                 # Создаем объект Past и сохраняем его в базе данных
+
                 past = Past(date=date,
                             minTem=float(values[i + 2]),
                             maxTem=float(values[i + 3]),
                             averageTem=float(values[i + 4]),
                             atmosphericPressure=float(values[i + 5]),
-                            windSpeed=int(values[i + 6]),
+                            windSpeed=ws,
                             precipitation=float(values[i + 7]),
                             city=location)
                 past.save()
