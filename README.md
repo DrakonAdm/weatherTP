@@ -28,7 +28,7 @@
 [Диаграммы.pdf](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Диаграммы.pdf)  
 [Диаграммы.docx](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Диаграммы.docx)  
 [Презентация.pptx](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Команда%203-6.%20Погода%20от%20Терминатора.pptx)  
-[Сопроводительное письмо.pdf]()
+[Сопроводительное письмо.pdf](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Сопроводительное%20письмо.pdf)
 
 # Код приложения:
 
