@@ -27,6 +27,12 @@
 [Диаграммы.pdf](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Диаграммы.pdf)  
 [Диаграммы.docx](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Диаграммы.docx)  
 [Презентация.pptx](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Команда%203-6.%20Погода%20от%20Терминатора.pptx)
+[Сопроводительное письмо.pdf]()
+
+# Код приложения:
+
+[Backend]()
+[Fronted]()
 
 # Видео:
 [Видео демонстрация серверной части web-приложения](https://drive.google.com/file/d/1Ss24YtUy8NkiawfMVtq2UmfWH_GMRuM9/view?usp=sharing)  
