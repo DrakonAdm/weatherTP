@@ -2,28 +2,23 @@ import {
     HOME_ROUTE,
     TOMORROW_ROUTE,
     DAYS_ROUTE,
-    MONTH_ROUTE,
     DATE_ROUTE,
     STATISTIC_ROUTE,
     ARCHIVE_ROUTE,
     ABNORMAL_ROUTE,
     LOGIN_ROUTE,
     REGISTRATION_ROUTE,
-    PROFILE_USER_ROUTE, PROFILE_ADMIN_ROUTE, CHANGE_AD_ROUTE, USERS_ROUTE
+    PROFILE_USER_ROUTE,
 } from "./utils/consts";
 import Home from "./pages/Home";
 import Tomorrow from "./pages/Tomorrow";
 import Days from "./pages/Days";
-import Month from "./pages/Month";
 import Date from "./pages/Date";
 import Statistic from "./pages/Statistic";
 import Archive from "./pages/Archive";
 import Auth from "./pages/Auth";
 import Abnormal from "./pages/Abnormal";
 import ProfileUser from "./pages/ProfileUser";
-import ProfileAdmin from "./pages/ProfileAdmin";
-import ChangeAd from "./pages/ChangeAd";
-import Users from "./pages/Users";
 import Registration from "./pages/Registration";
 
 
@@ -40,10 +35,10 @@ export const publicRoutes = [
         path: DAYS_ROUTE,
         Component: Days
     },
-    {
+   /* {
         path: MONTH_ROUTE,
         Component: Month
-    },
+    },*/
     {
         path: DATE_ROUTE,
         Component: Date
@@ -80,6 +75,7 @@ export const authRoutes = [
 
 ]
 
+/*
 export const adminRoutes = [
     {
         path: PROFILE_ADMIN_ROUTE,
@@ -94,4 +90,4 @@ export const adminRoutes = [
         Component: Users
     },
 
-]
+]*/

@@ -4,19 +4,19 @@ import {Context} from "../index";
 import {Pagination} from "react-bootstrap";
 
 const Pages = observer(() => {
-    const {medbox} = useContext(Context)
-    const pageCount = Math.ceil(medbox.totalCount / medbox.limit)
+    const {data} = useContext(Context)
+    const pageCount = Math.ceil(data.statTotalCount / data.statLimit)
     const pages = []
     for (let i = 0; i < pageCount; i++){
         pages.push(i + 1)
     }
     return (
-        <Pagination className="mt-5">
+        <Pagination className="mt-3 align-self-center">
             {pages.map(page =>
                 <Pagination.Item
                     key={page}
-                    active={medbox.page === page}
-                    onClick={() => medbox.setPage(page)}
+                    active={data.statPage === page}
+                    onClick={() => data.setStatPage(page)}
                 >
                     {page}
                 </Pagination.Item>

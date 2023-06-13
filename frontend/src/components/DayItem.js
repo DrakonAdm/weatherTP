@@ -1,9 +1,9 @@
 import React from 'react';
 import {Card, Col, Form, Row} from "react-bootstrap";
 
-const DayItem = ({weather}) => {
+const DayItem = ({weather, name}) => {
     return (
-        <Col>
+        <Col className={name === "month" ? "colStyle mt-2" : "colStyle2 mt-2"}>
             <Card style={{width: 150, cursor: 'pointer', backgroundColor: "#EFF8FF"}} border={"large"}>
                {/* <Card style={{borderWidth: 0}} className="text-center">*/}
                     <Card.Body>
