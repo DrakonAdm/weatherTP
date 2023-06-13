@@ -4,7 +4,9 @@ from django.contrib.auth.hashers import make_password
 from django.core.validators import MinValueValidator
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+from django.db.models import Max, Min
 from django.utils.translation import gettext_lazy as _
+from datetime import datetime
 
 
 class UserManager(BaseUserManager):
@@ -72,14 +74,14 @@ class Location(models.Model):
 
     def collectModelLocation(self):
         # Открываем файл с данными
-        file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'listLocation.txt')
+        file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), './static/listLocation.txt')
         with open(file_path, 'r') as f:
             # Читаем строки из файла
             lines = f.readlines()
             for line in lines:
                 # Обрабатываем строку и создаем новый объект модели Location
-                name, description = line.strip().split(' ')
-                location = Location.objects.create(name=name, description=description)
+                country, city = line.strip().split(' ', maxsplit=1)
+                location = Location.objects.create(country=country, city=city)
                 location.save()
 
     class Meta:
@@ -89,13 +91,16 @@ class Location(models.Model):
 
 class Forecast(models.Model):
     date = models.DateField()
-    minTem = models.FloatField()
-    maxTem = models.FloatField()
-    averageTem = models.FloatField()
-    atmosphericPressure = models.IntegerField(validators=[MinValueValidator(0)])
-    windSpeed = models.IntegerField(validators=[MinValueValidator(0)])
-    precipitation = models.DecimalField(validators=[MinValueValidator(0)], max_digits=5, decimal_places=2)
+    minTem = models.FloatField(null=True)
+    maxTem = models.FloatField(null=True)
+    averageTem = models.FloatField(null=True)
+    atmosphericPressure = models.IntegerField(validators=[MinValueValidator(0)], null=True)
+    windSpeed = models.IntegerField(validators=[MinValueValidator(0)], null=True)
+    precipitation = models.DecimalField(validators=[MinValueValidator(0)], max_digits=5, decimal_places=2, null=True)
     city = models.ForeignKey(Location, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.date}"
 
     class Meta:
         managed = True
@@ -107,10 +112,47 @@ class Past(models.Model):
     minTem = models.FloatField()
     maxTem = models.FloatField()
     averageTem = models.FloatField()
-    atmosphericPressure = models.IntegerField(validators=[MinValueValidator(0)])
+    atmosphericPressure = models.FloatField(validators=[MinValueValidator(0)])
     windSpeed = models.IntegerField(validators=[MinValueValidator(0)])
     precipitation = models.DecimalField(validators=[MinValueValidator(0)], max_digits=5, decimal_places=2)
     city = models.ForeignKey(Location, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.date}"
+
+    def read_past_weather_file(self):
+        file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), './static/pastWeather.txt')
+        with open(file_path, 'r', encoding='utf-8') as file:
+            for line in file:
+                # Разбиваем строку на отдельные значения
+                values = line.strip().split()
+
+                # Получаем название города и дату из первых двух значений
+                if len(values) == 9:
+                    city_name = values[0] + " " + values[1]
+                    date_str = values[2]
+                    i = 1
+                else:
+                    city_name = values[0]
+                    date_str = values[1]
+                    i = 0
+
+                # Преобразуем строку даты в объект datetime
+                date = datetime.strptime(date_str, '%d.%m.%Y').date()
+
+                # Получаем объект Location для данного города
+                location = Location.objects.get(city=city_name)
+
+                # Создаем объект Past и сохраняем его в базе данных
+                past = Past(date=date,
+                            minTem=float(values[i + 2]),
+                            maxTem=float(values[i + 3]),
+                            averageTem=float(values[i + 4]),
+                            atmosphericPressure=float(values[i + 5]),
+                            windSpeed=int(values[i + 6]),
+                            precipitation=float(values[i + 7]),
+                            city=location)
+                past.save()
 
     class Meta:
         managed = True
@@ -125,6 +167,60 @@ class Abnormal(models.Model):
     maxP = models.OneToOneField(Past, on_delete=models.SET_NULL, null=True, related_name="pastP")
     city = models.ForeignKey(Location, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f"{self.year}"
+
+    @staticmethod
+    def find_abnormal_weather(start_year=2020, end_year=2023):
+        locations = Location.objects.all()
+
+        for location in locations:
+            abnormal_weather = []
+
+            past_data = Past.objects.filter(city=location)
+
+            for year in range(start_year, end_year + 1):
+                year_data = past_data.filter(date__year=year)
+
+                if year_data:
+                    min_tem = year_data.aggregate(Min('minTem'))['minTem__min']
+                    max_tem = year_data.aggregate(Max('maxTem'))['maxTem__max']
+                    max_ws = year_data.aggregate(Max('windSpeed'))['windSpeed__max']
+                    max_p = year_data.aggregate(Max('precipitation'))['precipitation__max']
+
+                    abnormal_year = Abnormal(year=year, city=location)
+
+                    for past in year_data:
+                        if past.minTem == min_tem:
+                            abnormal_year.minT = past
+
+                        if past.maxTem == max_tem:
+                            abnormal_year.maxT = past
+
+                        if past.windSpeed == max_ws:
+                            abnormal_year.maxWS = past
+
+                        if past.precipitation == max_p:
+                            abnormal_year.maxP = past
+
+                    if abnormal_year.minT or abnormal_year.maxT or abnormal_year.maxWS or abnormal_year.maxP:
+                        abnormal_weather.append(abnormal_year)
+
+            Abnormal.objects.bulk_create(abnormal_weather)
+
     class Meta:
         managed = True
         db_table = 'abnormal'
+
+
+class Advertisement(models.Model):
+    short = models.CharField(_('English'), max_length=20, null=False, blank=False, unique=True)
+    long = models.CharField(_('Russian'), max_length=100, null=False, blank=False, unique=False)
+    page = models.ImageField()
+
+    def __str__(self):
+        return f"{self.short} and {self.long}."
+
+    class Meta:
+        managed = True
+        db_table = 'advertisement'

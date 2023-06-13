@@ -26,17 +26,17 @@ router.register(r'listUser', UserViewSets)
 urlpatterns = [
 
     # advertisement
-    path('advertisementPOST/', AdvertisementAPIView.as_view(), name='advertisementPOST'),  # post - сохранение файла
     path('advertisementGET/', ImageAPIView.as_view(), name='advertisementGET'),  # get - выдача файла
 
     path('listCC/', GetViewAPICountryCity.as_view(), name='listCC'),  # списки стран и городов
+    path('listCity/', GetViewAPICity.as_view(), name='listCity'),  # списки городов
 
     # авторизация и аутентификация по простому https://github.com/dotja/authentication_app_react_django_rest
     path('register/', UserRegister.as_view(), name='register'),
     path('login/', UserLogin.as_view(), name='login'),
     path('logout/', UserLogout.as_view(), name='logout'),
     # на всякий случай
-    path('user/', UserView.as_view(), name='user'),
+    # path('user/', UserView.as_view(), name='user'),
 
     # обработка изменений User от админа
     # обработка изменений User от админа
@@ -57,7 +57,7 @@ urlpatterns = [
     path('statisticPast/', PastView.as_view(), name='statisticPast'),  # статистика прошедшей погоды
     path('statisticAbnormal/', AbnormalView.as_view(), name='statisticAbnormal'),  # статистика аномальной погоды
 
-    # просто выдаёт nickname пользователя
+    # просто выдаёт nickname пользователя или почту, если nickname нет
     path('choiceUser/', SetViewNicknameUser.as_view(), name='choiceUser'),
     # выбор статистики погоды SetViewEmailSuperUser
     # просто выдаёт email superuser
@@ -67,6 +67,6 @@ urlpatterns = [
 urlpatterns += urlpatterns1
 # http://127.0.0.1:8000/swagger/
 
-handler404 = pageNotFound
+# handler404 = pageNotFound
 
 # urlpatterns += router.urls

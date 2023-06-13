@@ -33,7 +33,7 @@ registration_user = swagger_auto_schema(
     operation_summary='User registration',
     tags=['Users'],
     responses={
-        200: openapi.Response(description='OK', schema=UserSerializer),
+        201: 'Created',
         400: 'Bad Request',
         403: 'Forbidden'
     },
@@ -50,7 +50,7 @@ redefinition_post = swagger_auto_schema(
     operation_summary='Redefinition',
     tags=['Users'],
     responses={
-        400: 'Bad Request',
+        400: 'You did not enter your password',
         401: 'Unauthorized',
         403: 'Forbidden'
     },
@@ -60,7 +60,8 @@ redefinition_post = swagger_auto_schema(
         openapi.Parameter('nickname', openapi.IN_QUERY, description="Yours new nickname (optional)", type=openapi.TYPE_STRING),
         openapi.Parameter('city', openapi.IN_QUERY, description="Yours new city (optional)", type=openapi.TYPE_STRING),
         openapi.Parameter('country', openapi.IN_QUERY, description="Yours new country (optional)", type=openapi.TYPE_STRING),
-    ]
+    ],
+    required=['password'],
 )
 
 advertisement_get = swagger_auto_schema(
@@ -72,21 +73,7 @@ advertisement_get = swagger_auto_schema(
         403: 'Forbidden'
     },
     manual_parameters=[
-        openapi.Parameter('image_name', openapi.IN_QUERY, description="image_name", type=openapi.TYPE_STRING),
-    ]
-)
-
-advertisement_post = swagger_auto_schema(
-    operation_summary='Looks advertisement ',
-    tags=['Advertisement'],
-    responses={
-        204: 'No Content',
-        400: 'Bad Request',
-        403: 'Forbidden'
-    },
-    manual_parameters=[
-        openapi.Parameter('file', openapi.IN_QUERY, description="file", type=openapi.TYPE_FILE),
-        openapi.Parameter('file_name', openapi.IN_QUERY, description="file_name", type=openapi.TYPE_STRING),
+        openapi.Parameter('short', openapi.IN_QUERY, description="short", type=openapi.TYPE_STRING),
     ]
 )
 
@@ -210,3 +197,15 @@ country_city_get = swagger_auto_schema(
         openapi.Parameter('country', openapi.IN_QUERY, description="Yours new country (optional)", type=openapi.TYPE_STRING),
     ]
 )
+
+city_get = swagger_auto_schema(
+    operation_summary='City',
+    tags=['List'],
+    responses={
+        204: 'No Content',
+        400: 'Bad Request',
+        401: 'Unauthorized',
+        403: 'Forbidden'
+    }
+)
+
