@@ -9,9 +9,9 @@ const AppRouter = () => {
     console.log(user)
     return (
         <Routes>
-            {user.isAdmin && adminRoutes.map(({path, Component}) =>
+            {/*{user.isAdmin && adminRoutes.map(({path, Component}) =>
                 <Route key={path} path={path} element={<Component/>} exact/>
-            )}
+            )}*/}
             {user.isAuth && authRoutes.map(({path, Component}) =>
                 <Route key={path} path={path} element={<Component/>} exact/>
             )}

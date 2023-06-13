@@ -2,9 +2,10 @@ import {makeAutoObservable} from "mobx";
 
 export default class User {
     constructor() {
-        this._isAuth = true
-        this._isAdmin = true
-        this._user = {name: "Имя", city: "Воронеж", country: "Россия", email: "1111@mail.ru" }
+        this._isAuth = false
+/*        this._isAdmin = false*/
+        this._user = {}
+        this._chooseCity = ""
         makeAutoObservable(this)
     }
 
@@ -12,24 +13,32 @@ export default class User {
         this._isAuth = bool
     }
 
-    setIsAdmin(bool) {
+/*    setIsAdmin(bool) {
         this._isAdmin = bool
-    }
+    }*/
 
     setUser(user) {
         this._user = user
+    }
+
+    setChooseCity(city) {
+        this._chooseCity = city
     }
 
     get isAuth() {
         return this._isAuth
     }
 
-    get isAdmin() {
+  /*  get isAdmin() {
         return this._isAdmin
-    }
+    }*/
 
     get user() {
         return this._user
+    }
+
+    get chooseCity() {
+        return this._chooseCity;
     }
 
 }

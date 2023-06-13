@@ -1,87 +1,42 @@
 import {makeAutoObservable} from "mobx";
-import {Dropdown} from "react-bootstrap";
 import React from "react";
 
 export default class Data {
     constructor() {
-        this._weather = [
-            {id: 1, date:'23/03/23', minTemp: 12, maxTemp: 20, avgTemp: 16, pressure: 740, windSpeed: 3, rainfall: 0, idCity: 1},
-            {id: 1, date:'24/03/23', minTemp: 12, maxTemp: 20, avgTemp: 16, pressure: 740, windSpeed: 3, rainfall: 0, idCity: 1},
-            {id: 1, date:'25/03/23', minTemp: 12, maxTemp: 20, avgTemp: 16, pressure: 740, windSpeed: 3, rainfall: 0, idCity: 1},
-            {id: 1, date:'26/03/23', minTemp: 12, maxTemp: 20, avgTemp: 16, pressure: 740, windSpeed: 3, rainfall: 0, idCity: 1},
-            {id: 1, date:'27/03/23', minTemp: 12, maxTemp: 23, avgTemp: 16, pressure: 740, windSpeed: 3, rainfall: 0, idCity: 1},
-            {id: 1, date:'28/03/23', minTemp: 12, maxTemp: 20, avgTemp: 16, pressure: 740, windSpeed: 3, rainfall: 0, idCity: 1},
-            {id: 1, date:'29/03/23', minTemp: 12, maxTemp: 20, avgTemp: 16, pressure: 740, windSpeed: 3, rainfall: 0, idCity: 1},
-            {id: 1, date:'30/03/23', minTemp: 12, maxTemp: 20, avgTemp: 16, pressure: 740, windSpeed: 3, rainfall: 0, idCity: 1},
-            {id: 1, date:'23/03/23', minTemp: 12, maxTemp: 20, avgTemp: 26, pressure: 740, windSpeed: 3, rainfall: 0, idCity: 1},
-            {id: 1, date:'23/03/23', minTemp: 12, maxTemp: 20, avgTemp: 16, pressure: 740, windSpeed: 3, rainfall: 0, idCity: 1},
-            {id: 1, date:'23/03/23', minTemp: 12, maxTemp: 20, avgTemp: 16, pressure: 740, windSpeed: 3, rainfall: 0, idCity: 1},
-            {id: 1, date:'24/03/23', minTemp: 12, maxTemp: 20, avgTemp: 16, pressure: 740, windSpeed: 3, rainfall: 0, idCity: 1},
-            {id: 1, date:'25/03/23', minTemp: 12, maxTemp: 20, avgTemp: 16, pressure: 740, windSpeed: 3, rainfall: 0, idCity: 1},
-            {id: 1, date:'26/03/23', minTemp: 12, maxTemp: 20, avgTemp: 16, pressure: 740, windSpeed: 3, rainfall: 0, idCity: 1},
-            {id: 1, date:'27/03/23', minTemp: 12, maxTemp: 23, avgTemp: 16, pressure: 740, windSpeed: 3, rainfall: 0, idCity: 1},
-            {id: 1, date:'28/03/23', minTemp: 12, maxTemp: 20, avgTemp: 16, pressure: 740, windSpeed: 3, rainfall: 0, idCity: 1},
-            {id: 1, date:'29/03/23', minTemp: 12, maxTemp: 20, avgTemp: 16, pressure: 740, windSpeed: 3, rainfall: 0, idCity: 1},
-            {id: 1, date:'30/03/23', minTemp: 12, maxTemp: 20, avgTemp: 16, pressure: 740, windSpeed: 3, rainfall: 0, idCity: 1},
-            {id: 1, date:'23/03/23', minTemp: 12, maxTemp: 20, avgTemp: 26, pressure: 740, windSpeed: 3, rainfall: 0, idCity: 1},
-            {id: 1, date:'23/03/23', minTemp: 12, maxTemp: 20, avgTemp: 16, pressure: 740, windSpeed: 3, rainfall: 0, idCity: 1},
-        ]
-        this._statistic = [
-            {id: 1, date:'23/03/23', minTemp: 12, maxTemp: 20, avgTemp: 16, pressure: 740, windSpeed: 3, rainfall: 0, idCity: 1},
-            {id: 1, date:'23/03/23', minTemp: 12, maxTemp: 20, avgTemp: 16, pressure: 740, windSpeed: 3, rainfall: 0, idCity: 1},
-            {id: 1, date:'23/03/23', minTemp: 12, maxTemp: 20, avgTemp: 16, pressure: 740, windSpeed: 3, rainfall: 0, idCity: 1},
-            {id: 1, date:'23/03/23', minTemp: 12, maxTemp: 20, avgTemp: 16, pressure: 740, windSpeed: 3, rainfall: 0, idCity: 1},
-            {id: 1, date:'23/03/23', minTemp: 12, maxTemp: 20, avgTemp: 16, pressure: 740, windSpeed: 3, rainfall: 0, idCity: 1},
-            {id: 1, date:'23/03/23', minTemp: 12, maxTemp: 20, avgTemp: 16, pressure: 740, windSpeed: 3, rainfall: 0, idCity: 1},
-            {id: 1, date:'23/03/23', minTemp: 12, maxTemp: 20, avgTemp: 16, pressure: 740, windSpeed: 3, rainfall: 0, idCity: 1},
-        ]
-        this._abnormal = [
-            {id: 1, idTown: 1, minTemp: 12, maxTemp: 20, maxRainfall: 16, maxWindSpeed: 34}, //Здесь нужно брать id дня аномалий
-            {id: 1, idTown: 1, minTemp: 12, maxTemp: 20, maxRainfall: 16, maxWindSpeed: 34},
-            {id: 1, idTown: 1, minTemp: 12, maxTemp: 20, maxRainfall: 16, maxWindSpeed: 34},
-            {id: 1, idTown: 1, minTemp: 12, maxTemp: 20, maxRainfall: 16, maxWindSpeed: 34},
-        ]
 
-        this._clothes = [
-            "Куртка, футболка, джинсы, кроссовки"
-        ]
+        this._weatherDay = []
 
-        this._city = [
-            {id: 1, town: "Город", country: "Страна1"},
-            {id: 1, town: "Город1", country: "Страна1"},
-            {id: 1, town: "Город2", country: "Страна1"},
-            {id: 1, town: "Город3", country: "Страна1"},
-            {id: 1, town: "Город4", country: "Страна2"},
-            {id: 1, town: "Город5", country: "Страна2"},
-        ]
+        this._weather5Days = []
 
+        this._weatherMonth = []
 
-        this._listUsers = [
-            {id: 1, name: "Имя", email: "Почта"},
-            {id: 1, name: "Имя", email: "Почта"},
-            {id: 1, name: "Имя", email: "Почта"},
-            {id: 1, name: "Имя", email: "Почта"},
-            {id: 1, name: "Имя", email: "Почта"},
-            {id: 1, name: "Имя", email: "Почта"},
-        ]
+        this._statistic = []
 
+        this._abnormal = []
 
-        this._pages = [
-            {page: "Главная страница", image: "public/вгу.jpg"},
-            {page: "Прогноз на завтра", image: ""},
-            {page: "Прогноз на 10 дней", image: ""},
-            {page: "Прогноз на месяц", image: ""},
-            {page: "Прогноз на дату", image: ""},
-            {page: "Статистика за прошедшие годы", image: ""}
-        ]
+        this._clothes = []
 
+        this._listCities = []
+
+        this._cityCountry = []
+
+        this._page = []
+
+        this._statPage = 1
+        this._statTotalCount = 0
+        this._statLimit = 3
 
         makeAutoObservable(this)
     }
 
-    setWeather(weather) {
-        this._weather= weather
+    setWeatherDay(weather) {
+        this._weatherDay[0] = weather
     }
+
+    setWeather5Days(weather) {
+        this._weather5Days= weather
+    }
+
 
     setStatistics(statistic) {
         this._statistic = statistic
@@ -95,16 +50,35 @@ export default class Data {
         this._clothes = clothes
     }
 
-    setPages(pages) {
-        this._images = pages
+    setCityCountry(cityCountry) {
+        this._cityCountry = cityCountry
     }
 
-    setUsers(users) {
-        this._listUsers = users
+    setPage(page) {
+        this._page[0] = page;
     }
 
-    get weather() {
-        return this._weather
+
+    setListCities(list) {
+        this._listCities = list;
+    }
+
+
+    setStatPage(page) {
+        this._statPage = page
+    }
+
+    setTotalCount(count) {
+        this._statTotalCount = count
+    }
+
+
+    get weatherDay() {
+        return this._weatherDay
+    }
+
+    get weather5Days() {
+        return this._weather5Days
     }
 
     get statistics() {
@@ -119,13 +93,29 @@ export default class Data {
         return this._clothes
     }
 
-    get listUsers() {
-        return this._listUsers
+    get cityCountry() {
+        return this._cityCountry
     }
 
-    get pages() {
-        return this._pages
+    get page() {
+        return this._page
     }
 
+
+    get listCities() {
+        return this._listCities
+    }
+
+    get statPage() {
+        return this._statPage
+    }
+
+    get statLimit() {
+        return this._statLimit
+    }
+
+    get statTotalCount() {
+        return this._statTotalCount
+    }
 
 }

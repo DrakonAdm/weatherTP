@@ -43,12 +43,16 @@
 
 /* navbar */
 .navbar-default {
-  background-color: #D4E6FF91;
+  background-color: #FFFAF4;
   border-color: #E7E7E7;
 }
 
 .background {
   background-color: #FFFAF4;
+  background-image: url("/public/background.png");
+  background-size: 100% 100vh;
+  height: 700px;
+  background-position: left top;
 }
 
 .button_menu {
@@ -57,8 +61,10 @@
   /* Auto layout */
 
   display: flex;
-  flex-direction: column;
+  /*flex-direction: inherit;*/
   align-self: center;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   padding: 10px;
   gap: 10px;
@@ -82,8 +88,9 @@
   /* Auto layout */
 
   display: flex;
-  flex-direction: column;
   align-self: center;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   padding: 10px;
   gap: 10px;
@@ -98,6 +105,42 @@
   /* Inside auto layout */
   order: 1;
   flex-grow: 0;
-  color: #EADAFF;
+  color: #FFFAF4;
 
+}
+
+.colStyle {
+  max-width: 14%;
+}
+
+.colStyle2 {
+  min-width: 20%;
+}
+
+
+.drop_menu {
+  box-sizing: border-box;
+
+  /* Auto layout */
+
+  display: flex;
+  /*flex-direction: inherit;*/
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  gap: 10px;
+
+  width: 200px;
+  height: 40px;
+
+  background: #ABCFFF;
+  border: 1px solid #000000;
+  border-radius: 15px;
+
+  /* Inside auto layout */
+  order: 1;
+  flex-grow: 0;
+  color: black;
 }
