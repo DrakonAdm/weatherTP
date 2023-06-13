@@ -41,9 +41,9 @@ class UserRegisterSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def create(self, clean_data):
-        user_obj = UserModel.objects.create_user(nickname=clean_data['nickname'], password=clean_data['password'])
-        if 'email' in clean_data:
-            user_obj.email = clean_data['email']
+        user_obj = UserModel.objects.create_user(email=clean_data['email'], password=clean_data['password'])
+        if 'nickname' in clean_data:
+            user_obj.email = clean_data['nickname']
         if 'country' in clean_data:
             user_obj.country = clean_data['country']
         if 'city' in clean_data:
@@ -107,3 +107,4 @@ class LocationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Location
         fields = ('id', 'country', 'city')
+

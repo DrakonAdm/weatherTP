@@ -78,6 +78,11 @@ def update_Abnormal():
                 break
 
 
+def createMonth():
+    for i in range(1, 30):
+        updateForecastThirtySecondDay(i)
+
+
 def updateForecastToday():
     today = timezone.now().date()
 
@@ -87,8 +92,8 @@ def updateForecastToday():
         updateForecastWeather(forecast)
 
 
-def updateForecastThirtySecondDay():
-    today = timezone.now().date() + timedelta(days=30)
+def updateForecastThirtySecondDay(integerDay=30):
+    today = timezone.now().date() + timedelta(days=integerDay)
     available_cities = Location.objects.values_list('id', flat=True)
 
     # Loop through the available cities
