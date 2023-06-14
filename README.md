@@ -29,6 +29,7 @@
 [Диаграммы.docx](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Диаграммы.docx)  
 [Презентация.pptx](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Команда%203-6.%20Погода%20от%20Терминатора.pptx)  
 [Сопроводительное письмо.pdf](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Сопроводительное%20письмо.pdf)
+[Сопроводительное письмо.docx](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Сопроводительное%20письмо.docx)
 
 # Код приложения:
 
@@ -37,5 +38,6 @@
 
 # Видео:
 [Видео демонстрация серверной части web-приложения](https://drive.google.com/file/d/1Ss24YtUy8NkiawfMVtq2UmfWH_GMRuM9/view?usp=sharing)  
+[Видео демонстрация клиентской части web-приложения](https://drive.google.com/file/d/1qH__jrAv5FR9TB5rcVVXG6yMwgffxMaL/view?usp=drive_link)
 
 
