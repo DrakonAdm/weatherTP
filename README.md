@@ -23,8 +23,8 @@
 # Документация: 
 [Курсовая работа.pdf](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/КурсоваяТП.pdf)  
 [Курсовая работа.docx](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/КурсоваяТП.docx)  
-[Техническое задание.pdf](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Техническое%20задание.pdf)  
-[Техническое задание.docx](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Техническое%20задание.docx)  
+[Техническое задание.pdf](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/курсовая%20работа.pdf)  
+[Техническое задание.docx](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/курсовая%20работа.docx)  
 [Диаграммы.pdf](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Диаграммы.pdf)  
 [Диаграммы.docx](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Диаграммы.docx)  
 [Презентация.pptx](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Команда%203-6.%20Погода%20от%20Терминатора.pptx)  
