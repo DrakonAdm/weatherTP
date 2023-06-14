@@ -21,8 +21,8 @@
 [Swagger](http://158.160.70.99:30/swagger/)
       
 # Документация: 
-[Курсовая работа.pdf](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/КурсоваяТП.pdf)  
-[Курсовая работа.docx](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/КурсоваяТП.docx)  
+[Курсовая работа.pdf](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/курсовая%20работа.pdf)  
+[Курсовая работа.docx](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/курсовая%20работа.docx)  
 [Техническое задание.pdf](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/курсовая%20работа.pdf)  
 [Техническое задание.docx](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/курсовая%20работа.docx)  
 [Диаграммы.pdf](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Диаграммы.pdf)  
