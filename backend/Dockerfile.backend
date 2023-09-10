@@ -1,0 +1,8 @@
+FROM python:3.10.13-alpine
+WORKDIR /app
+COPY backend/requirements.txt /app/
+RUN apk add libpq-dev && \
+	apk add build-base &&\
+	apk add lapack-dev gcc g++ gfortran musl-dev libffi-dev python3-dev openblas-dev &&\
+	pip install -r /app/requirements.txt
+COPY backend /app

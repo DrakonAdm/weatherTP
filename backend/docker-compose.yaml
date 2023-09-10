@@ -1,0 +1,52 @@
+version: '3'
+
+networks:
+  my_network:
+    driver: bridge
+
+services:
+  db:
+    container_name: db
+    networks:
+      - my_network
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: anton909808
+      POSTGRES_DB: ter
+    ports:
+      - "5432:5432"
+  backend:
+    container_name: backend
+    networks:
+      - my_network
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    restart: always
+    command: sh -c "python ./terminator/manage.py makemigrations && python ./terminator/manage.py migrate && python ./terminator/manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DB_HOST:db
+      - DB_NAME:ter
+      - DB_USER:postgres
+      - DB_PASSWORD:anton909808
+
+  frontend:
+    container_name: frontend
+    networks:
+      - my_network
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    restart: always
+    command: npm start
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+          
