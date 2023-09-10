@@ -1,0 +1,178 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.pagination-buttons {
+  display: flex; /* Display the buttons in a row */
+  justify-content: space-between; /* Add space between the buttons */
+}
+
+.pagination-button {
+  box-sizing: border-box;
+
+  /* Auto layout */
+
+  display: flex;
+  /*flex-direction: inherit;*/
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  gap: 10px;
+
+  width: 150px;
+  height: 44px;
+
+  background: #ABCFFF;
+  border: 1px solid #000000;
+  border-radius: 15px;
+
+  /* Inside auto layout */
+  order: 1;
+  flex-grow: 0;
+  color: black;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.navbar-collapse {
+  text-align: right;
+}
+
+/* navbar */
+.navbar-default {
+  background-color: #FFFAF4;
+  border-color: #E7E7E7;
+}
+
+.background {
+  background-color: #FFFAF4;
+  background-image: url("/public/background.png");
+  background-size: 100% 100vh;
+  height: 700px;
+  background-position: left top;
+}
+
+.button_menu {
+  box-sizing: border-box;
+
+  /* Auto layout */
+
+  display: flex;
+  /*flex-direction: inherit;*/
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  gap: 10px;
+
+  width: 336px;
+  height: 44px;
+
+  background: #ABCFFF;
+  border: 1px solid #000000;
+  border-radius: 15px;
+
+  /* Inside auto layout */
+  order: 1;
+  flex-grow: 0;
+  color: black;
+}
+
+.button_menu_active {
+  box-sizing: border-box;
+
+  /* Auto layout */
+
+  display: flex;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  gap: 10px;
+
+  width: 336px;
+  height: 44px;
+
+  background: #323232;
+  border: 1px solid #000000;
+  border-radius: 15px;
+
+  /* Inside auto layout */
+  order: 1;
+  flex-grow: 0;
+  color: #FFFAF4;
+
+}
+
+.colStyle {
+  max-width: 14%;
+}
+
+.colStyle2 {
+  min-width: 20%;
+}
+
+
+.drop_menu {
+  box-sizing: border-box;
+
+  /* Auto layout */
+
+  display: flex;
+  /*flex-direction: inherit;*/
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  gap: 10px;
+
+  width: 200px;
+  height: 40px;
+
+  background: #ABCFFF;
+  border: 1px solid #000000;
+  border-radius: 15px;
+
+  /* Inside auto layout */
+  order: 1;
+  flex-grow: 0;
+  color: black;
+}
