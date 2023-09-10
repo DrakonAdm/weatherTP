@@ -1,0 +1,7 @@
+FROM node:latest
+WORKDIR /app_front
+
+COPY ./frontend/package.json .
+RUN npm install
+COPY frontend /app_front
+CMD ["npm", "start"]
