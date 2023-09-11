@@ -16,7 +16,9 @@ services:
       POSTGRES_PASSWORD: anton909808
       POSTGRES_DB: ter
     ports:
-      - "5432:5432"
+      - "5433:5433"
+    volumes:
+      - .:/data/postgres
   backend:
     container_name: backend
     networks:
@@ -25,7 +27,9 @@ services:
       context: .
       dockerfile: Dockerfile.backend
     restart: always
-    command: sh -c "python ./terminator/manage.py makemigrations && python ./terminator/manage.py migrate && python ./terminator/manage.py runserver 0.0.0.0:8000"
+    # command: sh -c "python ./terminator/manage.py makemigrations && python ./terminator/manage.py migrate && python ./terminator/manage.py shell -c 'from terminator.terminatorWeather.models import Location; loc = Location(); loc.collectModelLocation()' && python ./terminator/manage.py shell -c 'from terminator.terminatorWeather.models import Past; past = Past(); Past().read_past_weather_file()' && python ./terminator/manage.py shell -c 'from terminator.terminatorWeather.models import Abnormal; abnormal = Abnormal(); Abnormal().find_abnormal_weather()' && echo 'from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser(\"Antoni.Drakon@mail.ru\", \"KiKBooto\")' | python ./terminator/manage.py shell && python ./terminator/terminatorWeather/scripts.py createMonth && python ./terminator/manage.py runserver 0.0.0.0:8000"
+    # && echo 'from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser(\"Antoni.Drakon@mail.ru\", \"KiKBooto\")' | python ./terminator/manage.py shell
+    # && python ./terminator/manage.py shell -c "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser(\'Antoni.Drakon@mail.ru\', \'KiKBooto\')"
     ports:
       - "8000:8000"
     depends_on:
