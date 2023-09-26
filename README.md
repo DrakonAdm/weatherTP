@@ -39,6 +39,7 @@
 [Fronted](https://github.com/DrakonAdm/weatherTP/tree/main/frontend)  
 
 ## Видео:
-[Видео демонстрация серверной части web-приложения](https://drive.google.com/file/d/1Ss24YtUy8NkiawfMVtq2UmfWH_GMRuM9/view?usp=sharing)  
-[Видео демонстрация клиентской части web-приложения](https://drive.google.com/file/d/10dreV7BHpLH0VOqMhgvRPffdn_WccjVa/view)  
+[Видео-демонстрация серверной части web-приложения](https://drive.google.com/file/d/1Ss24YtUy8NkiawfMVtq2UmfWH_GMRuM9/view?usp=sharing)  
+[Видео-демонстрация клиентской части web-приложения](https://drive.google.com/file/d/10dreV7BHpLH0VOqMhgvRPffdn_WccjVa/view)  
+[Видео-демонстрация развертки](https://drive.google.com/file/d/1r5QMQJyH5XnaVuyJCSMVgda1NYy_HvD_/view)  
 [Видео-презентация проекта](https://drive.google.com/file/d/1n12AiLwqHtFHxHZaphbnjWEklECTAVMg/view?t=1s)
