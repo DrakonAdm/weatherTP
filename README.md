@@ -45,5 +45,5 @@
 [Видео-презентация проекта](https://drive.google.com/file/d/1n12AiLwqHtFHxHZaphbnjWEklECTAVMg/view?t=1s)
 
 ## Рецензия на команду 3.1:
-Рецензия -  [pdf](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Курсовая%20работа.pdf),  [docx](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Рецензия.docx)  
+Рецензия -  [pdf](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Рецензия.pdf),  [docx](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Рецензия.docx)  
 Презентация - [pdf](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Техническое%20задание.pdf)    
