@@ -46,4 +46,4 @@
 
 ## Рецензия на команду 3.1:
 Рецензия -  [pdf](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Рецензия.pdf),  [docx](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Рецензия.docx)  
-Презентация - [pdf](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Техническое%20задание.pdf)    
+Презентация - [pdf](https://github.com/DrakonAdm/weatherTP/blob/main/Документация/Ревью%20команды%203-1.pdf)    
